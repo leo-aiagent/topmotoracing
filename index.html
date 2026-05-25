@@ -1082,409 +1082,234 @@ ul { list-style: none; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- ==========================================
-     1. TOP BAR
-     ========================================== -->
-<div class="top-bar">
-  <div class="top-bar__inner">
-    <a href="#" class="top-bar__pill" style="display:none">Bicycles</a>
-    <a href="#" class="top-bar__pill top-bar__pill--active">Motorcycles</a>
-    <a href="#" class="top-bar__link" style="display:none">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      MyHub
-    </a>
-    <div class="top-bar__country" style="display:none">
-      <span class="top-bar__country-flag">US</span>
-      CHANGE COUNTRY
-    </div>
+<div id="app">
+  <!-- Top Bar -->
+  <div class="top-bar" data-section="top_bar" style="display:none">
+    <div class="top-bar__inner" id="topBarInner"></div>
   </div>
+
+  <!-- Navigation -->
+  <nav class="nav" data-section="navigation" style="display:none">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo"><img src="images/logo-topmoto.png" alt="TOPMOTO"></a>
+      <ul class="nav__primary" id="navPrimary"></ul>
+      <div class="nav__actions">
+        <a href="#" class="nav__dealer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z"/></svg></a>
+        <button class="nav__toggle" id="navToggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div id="heroSlidesContainer"></div><div class="hero__dots" id="heroDots"></div>
+    <div class="hero__scroll"><span>Scroll down</span><div class="hero__scroll-line"></div></div>
+  </section>
+
+  <!-- Quick Access -->
+  <section class="quick-access" data-section="quick_access" style="display:none">
+    <div class="quick-access__grid" id="quickAccessGrid"></div>
+  </section>
+
+  <!-- Top Picks -->
+  <section class="top-picks" data-section="top_picks" style="display:none">
+    <h2 class="top-picks__heading container reveal" id="topPicksHeading"></h2>
+    <div class="top-picks__grid" id="topPicksGrid"></div>
+    <div class="model-range reveal"><p class="model-range__tagline" id="fullRangeTagline"></p><p class="model-range__title" id="fullRangeTitle"></p><a href="#" class="model-range__link" id="fullRangeLink">All motorcycles →</a></div>
+  </section>
+
+  <!-- Experience -->
+  <section class="experience" data-section="experience" style="display:none">
+    <h2 class="experience__heading container reveal" id="expHeading"></h2>
+    <div class="experience__grid" id="experienceGrid"></div>
+  </section>
+
+  <!-- News -->
+  <section class="news" data-section="news_section" style="display:none">
+    <h2 class="news__heading container reveal" id="newsHeading"></h2>
+    <div class="news__grid" id="newsGrid"></div>
+    <a href="#" class="news__all-link">All News →</a>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" data-section="newsletter" style="display:none">
+    <div class="container"><p class="newsletter__brand reveal" id="nlBrand"></p><p class="newsletter__tagline reveal" id="nlTagline"></p><p class="newsletter__desc reveal" id="nlDesc"></p>
+      <form class="newsletter__form reveal" onsubmit="event.preventDefault()"><input type="email" class="newsletter__input" id="nlPlaceholder" placeholder=""><button type="submit" class="newsletter__btn" id="nlBtn"></button></form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" data-section="footer" style="display:none">
+    <div class="footer__grid" id="footerColumns"></div>
+    <div class="footer__bottom"><span id="footerCopy"></span><a href="#hero" class="footer__back-top">BACK TO TOP ↑</a></div>
+  </footer>
 </div>
-
-<!-- ==========================================
-     2. MAIN NAVIGATION
-     ========================================== -->
-<nav class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="#" class="nav__logo">
-      <img src="images/logo-topmoto.png" alt="TOPMOTO">
-    </a>
-
-    <ul class="nav__primary" id="navMenu">
-      <!-- Motorcycles dropdown -->
-      <li class="nav__item">
-        <a href="#top-picks">Motorcycles</a>
-        <div class="nav__dropdown">
-          <div class="dropdown__grid">
-            <div>
-              <div class="dropdown__col-title">Motocross</div>
-              <a href="#" class="dropdown__link">450CC 4T</a>
-              <a href="#" class="dropdown__link">300CC 4T</a>
-              <a href="#" class="dropdown__link">250 2T</a>
-              <a href="#" class="dropdown__link">150CC 4T</a>
-              <a href="#" class="dropdown__link dropdown__link--sub">All Motocross</a>
-            </div>
-            <div>
-              <div class="dropdown__col-title">Dual-Sport</div>
-              <a href="#" class="dropdown__link">450CC 4T ONROAD</a>
-              <a href="#" class="dropdown__link">300CC 4T ONROAD</a>
-              <a href="#" class="dropdown__link dropdown__link--sub">All Dual-Sport</a>
-            </div>
-            <div>
-              <div class="dropdown__col-title">Quick Links</div>
-              <a href="#" class="dropdown__link">All Motorcycles</a>
-              <a href="#" class="dropdown__link">Electric</a>
-              <a href="#" class="dropdown__link">Kids</a>
-              <a href="#" class="dropdown__link">Accessories</a>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav__item"><a href="#">Technical Accessories</a></li>
-      <li class="nav__item"><a href="#">Apparel</a></li>
-      <li class="nav__item"><a href="#">Promotions</a></li>
-      <li class="nav__item"><a href="#">Experience TOPMOTO</a></li>
-      <li class="nav__item"><a href="#">Service</a></li>
-    </ul>
-
-    <div class="nav__actions">
-      <a href="#" class="nav__dealer-icon" title="Dealer Search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z"/></svg>
-      </a>
-      <button class="nav__toggle" id="navToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- ==========================================
-     3. HERO CAROUSEL
-     ========================================== -->
-<section class="hero" id="hero">
-  <div id="heroSlidesContainer"></div>
-  <div class="hero__dots" id="heroDots"></div>
-  <div class="hero__scroll">
-    <span>Scroll down</span>
-    <div class="hero__scroll-line"></div>
-  </div>
-</section>
-
-<!-- ==========================================
-     4. QUICK ACCESS CARDS
-     ========================================== -->
-<section class="quick-access" data-section="quick_access" style="display:none">
-  <div class="quick-access__grid">
-    <a href="#" class="quick-card">
-      <div class="quick-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z"/></svg>
-      </div>
-      <h6 class="quick-card__title">Dealer Search</h6>
-    </a>
-
-    <a href="#" class="quick-card">
-      <div class="quick-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.5v3L12 14l-9-4.5v-3L12 2z"/><path d="M3 9.5v7L12 21l9-4.5v-7"/><path d="M12 14v7"/></svg>
-      </div>
-      <h6 class="quick-card__title">Promotions</h6>
-    </a>
-
-    <a href="#" class="quick-card">
-      <div class="quick-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      </div>
-      <h6 class="quick-card__title">Spare Parts Finder</h6>
-    </a>
-
-    <a href="#" class="quick-card">
-      <div class="quick-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-      </div>
-      <h6 class="quick-card__title">Technical Accessories</h6>
-    </a>
-  </div>
-</section>
-
-<!-- ==========================================
-     5. TOP PICKS
-     ========================================== -->
-<section class="top-picks" id="top-picks" data-section="top_picks" style="display:none">
-  <h2 class="top-picks__heading container reveal">Top picks</h2>
-  <div class="top-picks__grid" id="topPicksGrid"></div>
-  <div class="model-range reveal">
-    <p class="model-range__tagline">Put the fun back into riding</p>
-    <p class="model-range__title">Full model range</p>
-    <a href="#" class="model-range__link">All motorcycles &#8594;</a>
-  </div>
-</section>
-
-<!-- ==========================================
-     6. EXPERIENCE TOPMOTO
-     ========================================== -->
-<section class="experience" id="experience" data-section="experience" style="display:none">
-  <h2 class="experience__heading container reveal">Experience TOPMOTO</h2>
-
-  <div class="experience__grid">
-    <a href="#" class="exp-card reveal">
-      <div class="exp-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      </div>
-      <span class="exp-card__text">Service</span>
-    </a>
-
-    <a href="#" class="exp-card reveal">
-      <div class="exp-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l9 4.5v3L12 14l-9-4.5v-3L12 2z"/><path d="M3 9.5v7L12 21l9-4.5v-7"/></svg>
-      </div>
-      <span class="exp-card__text">Promotions</span>
-    </a>
-
-    <a href="#" class="exp-card reveal">
-      <div class="exp-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4-8-4m16 0v10l-8 4-8-4V7"/></svg>
-      </div>
-      <span class="exp-card__text">Apparel</span>
-    </a>
-
-    <a href="#" class="exp-card reveal">
-      <div class="exp-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-      </div>
-      <span class="exp-card__text">Racing</span>
-    </a>
-  </div>
-</section>
-
-<!-- ==========================================
-     7. MORE ON TOPMOTO (News)
-     ========================================== -->
-<section class="news" data-section="news_section" style="display:none">
-  <h2 class="news__heading container reveal">MORE ON TOPMOTO</h2>
-  <div class="news__grid" id="newsGrid"></div>
-  <a href="#" class="news__all-link">All News &#8594;</a>
-</section>
-
-<!-- ==========================================
-     8. NEWSLETTER
-     ========================================== -->
-<section class="newsletter" data-section="newsletter" style="display:none">
-  <div class="container">
-    <p class="newsletter__brand reveal">JOIN TOPMOTO</p>
-    <p class="newsletter__tagline reveal">STAY CONNECTED / GET ON THE DIRT !!!</p>
-    <p class="newsletter__desc reveal">Subscribe now to join our exclusive TOPMOTO community to be the first to know about our latest products, ensuring you never miss out on hot TOPMOTO news.</p>
-    <form class="newsletter__form reveal" onsubmit="event.preventDefault()">
-      <input type="email" class="newsletter__input" placeholder="Your email address" required>
-      <button type="submit" class="newsletter__btn">sign up</button>
-    </form>
-  </div>
-</section>
-
-<!-- ==========================================
-     9. FOOTER
-     ========================================== -->
-<footer class="footer">
-  <div class="footer__grid">
-    <div>
-      <h4 class="footer__col-title">The Company</h4>
-      <div class="footer__links">
-        <a href="#">Bajaj Mobility AG</a>
-        <a href="#">Contact</a>
-        <a href="#">Careers</a>
-        <a href="#">Become a dealer</a>
-        <a href="#">Press Center</a>
-        <a href="#">Media Library</a>
-      </div>
-    </div>
-
-    <div>
-      <h4 class="footer__col-title">Explore</h4>
-      <div class="footer__links">
-        <a href="#">Dealer search</a>
-        <a href="#">Newsletter</a>
-        <a href="#">News</a>
-        <a href="#">Configurator</a>
-      </div>
-    </div>
-
-    <div>
-      <h4 class="footer__col-title">Service</h4>
-      <div class="footer__links">
-        <a href="#">Maintenance</a>
-        <a href="#">Owner Manuals</a>
-        <a href="#">Recalls Check</a>
-        <a href="#">Spare Parts Finder</a>
-        <a href="#">TOPMOTO+ App</a>
-        <a href="#">Warranty</a>
-      </div>
-    </div>
-
-    <div>
-      <h4 class="footer__col-title">Legal</h4>
-      <div class="footer__links">
-        <a href="#">Imprint</a>
-        <a href="#">Legal Notices</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Code of Conduct</a>
-      </div>
-    </div>
-
-    <div>
-      <h4 class="footer__col-title">Follow us</h4>
-      <div class="footer__social">
-        <a href="#" class="footer__social-link" title="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="#" class="footer__social-link" title="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-        <a href="#" class="footer__social-link" title="YouTube">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer__bottom">
-    <span>TOPMOTO Copyright 2026, all rights reserved</span>
-    <a href="#hero" class="footer__back-top">BACK TO TOP &#8593;</a>
-  </div>
-</footer>
 
 <script>
 // ==========================================
-// DATA-DRIVEN CONTENT RENDERING
+// DATA-DRIVEN RENDERING
 // ==========================================
-(async function() {
+(async function(){
+  const icons = {
+    dealer:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z"/></svg>',
+    promo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.5v3L12 14l-9-4.5v-3L12 2z"/><path d="M3 9.5v7L12 21l9-4.5v-7"/></svg>',
+    parts:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>',
+    tech:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
+    service:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+    apparel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4-8-4m16 0v10l-8 4-8-4V7"/></svg>',
+    racing:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>'
+  };
+  const iconMap = {0:'dealer',1:'promo',2:'parts',3:'tech','Service':'service','Promotions':'promo','Apparel':'apparel','Racing':'racing'};
+
   let data;
   try {
-    const resp = await fetch('data/content.json');
-    data = await resp.json();
-  } catch(e) {
-    console.warn('Content data not loaded, using fallback');
-    return;
-  }
+    const r = await fetch('data/content.json');
+    data = await r.json();
+  } catch(e) { return; }
 
-  // --- Section visibility ---
+  // Sections visibility
   if (data.sections) {
-    Object.entries(data.sections).forEach(([key, visible]) => {
-      const el = document.querySelector(`[data-section="${key}"]`);
-      if (el) el.style.display = visible ? '' : 'none';
+    Object.entries(data.sections).forEach(([k,v]) => {
+      const el = document.querySelector(`[data-section="${k}"]`);
+      if (el) el.style.display = v ? '' : 'none';
     });
   }
 
-  // --- Render Hero Slides ---
+  // 1. Top Bar
+  if (data.topBar) {
+    document.getElementById('topBarInner').innerHTML = `<a href="#" class="top-bar__pill top-bar__pill--active">${data.topBar.motorcycleText||'Motorcycles'}</a>`;
+  }
+
+  // 2. Navigation
+  if (data.navigation && data.navigation.menuItems) {
+    document.getElementById('navPrimary').innerHTML = data.navigation.menuItems.map(m => {
+      let dd = '';
+      if (m.hasDropdown && data.navigation.dropdowns[m.text]) {
+        dd = `<div class="nav__dropdown"><div class="dropdown__grid">${data.navigation.dropdowns[m.text].map(col => 
+          `<div><div class="dropdown__col-title">${col.col}</div>${col.items.map(it => `<a href="#" class="dropdown__link${it.startsWith('All')?' dropdown__link--sub':''}">${it}</a>`).join('')}</div>`
+        ).join('')}</div></div>`;
+      }
+      return `<li class="nav__item"><a href="${m.link}">${m.text}</a>${dd}</li>`;
+    }).join('');
+  }
+
+  // 3. Hero
   if (data.heroSlides && data.heroSlides.length) {
     const container = document.getElementById('heroSlidesContainer');
     const dotsContainer = document.getElementById('heroDots');
-    data.heroSlides.forEach((s, i) => {
+    data.heroSlides.forEach((s,i) => {
       const slide = document.createElement('div');
-      slide.className = 'hero__slide' + (i === 0 ? ' active' : '');
+      slide.className = 'hero__slide' + (i===0?' active':'');
       slide.dataset.index = i;
       slide.innerHTML = `<div class="hero__slide-bg"><img src="${s.image}" alt="Slide ${i+1}"></div>
-        <div class="hero__slide-content">
-          <span class="hero__slide-label">${s.label}</span>
-          <p class="hero__slide-tag">${s.tag}</p>
-          <h1 class="hero__slide-title">${s.title}</h1>
-          <p class="hero__slide-desc">${s.desc}</p>
-          <a href="${s.ctaLink || '#top-picks'}" class="hero__slide-cta">${s.ctaText}</a>
-        </div>`;
+        <div class="hero__slide-content"><span class="hero__slide-label">${s.label}</span><p class="hero__slide-tag">${s.tag}</p><h1 class="hero__slide-title">${s.title}</h1><p class="hero__slide-desc">${s.desc}</p><a href="${s.ctaLink||'#top-picks'}" class="hero__slide-cta">${s.ctaText}</a></div>`;
       container.appendChild(slide);
-
       const dot = document.createElement('button');
-      dot.className = 'hero__dot' + (i === 0 ? ' active' : '');
+      dot.className = 'hero__dot' + (i===0?' active':'');
       dot.dataset.index = i;
       dotsContainer.appendChild(dot);
     });
   }
 
-  // --- Carousel logic ---
-  const slides = document.querySelectorAll('.hero__slide');
-  const dots = document.querySelectorAll('.hero__dot');
-  let currentSlide = 0, autoPlayInterval;
-  function goToSlide(i) {
-    slides.forEach(s => s.classList.remove('active')); dots.forEach(d => d.classList.remove('active'));
-    if (slides[i]) { slides[i].classList.add('active'); dots[i].classList.add('active'); currentSlide = i; }
-  }
-  function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
-  dots.forEach(d => d.addEventListener('click', () => { goToSlide(+d.dataset.index); resetAutoPlay(); }));
-  function startAutoPlay() { autoPlayInterval = setInterval(nextSlide, 5000); }
-  function resetAutoPlay() { clearInterval(autoPlayInterval); startAutoPlay(); }
-  startAutoPlay();
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft') { goToSlide((currentSlide - 1 + slides.length) % slides.length); resetAutoPlay(); }
-    if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
-  });
-
-  let tx=0,ty=0;
-  const heroEl = document.getElementById('hero');
-  heroEl.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; });
-  heroEl.addEventListener('touchend', e => {
-    ty = e.changedTouches[0].screenX;
-    if (ty < tx - 60) { nextSlide(); resetAutoPlay(); }
-    if (ty > tx + 60) { goToSlide((currentSlide - 1 + slides.length) % slides.length); resetAutoPlay(); }
-  });
-
-  // --- Render Top Picks ---
-  if (data.topPicks && data.topPicks.length) {
-    const grid = document.getElementById('topPicksGrid');
-    data.topPicks.forEach(p => {
-      const card = document.createElement('a');
-      card.href = p.link || '#';
-      card.className = 'pick-card reveal';
-      card.innerHTML = `<div class="pick-card__image"><img src="${p.image}" alt="${p.model}"></div>
-        <h3 class="pick-card__model">${p.model}</h3>
-        <p class="pick-card__tagline">${p.tagline}</p>
-        <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>`;
-      grid.appendChild(card);
+  // Carousel
+  (function(){
+    const slides = document.querySelectorAll('.hero__slide');
+    const dots = document.querySelectorAll('.hero__dot');
+    let cur=0, iv;
+    function go(i) { slides.forEach(s=>s.classList.remove('active')); dots.forEach(d=>d.classList.remove('active')); slides[i]?.classList.add('active'); dots[i]?.classList.add('active'); cur=i; }
+    function nxt() { go((cur+1)%slides.length); }
+    dots.forEach(d=>d.addEventListener('click',()=>{go(+d.dataset.index); rst();}));
+    function rst() { clearInterval(iv); iv=setInterval(nxt,5000); }
+    function start() { iv=setInterval(nxt,5000); }
+    start();
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){go((cur-1+slides.length)%slides.length);rst()}if(e.key==='ArrowRight'){nxt();rst()}});
+    let tx=0; document.getElementById('hero').addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX});
+    document.getElementById('hero').addEventListener('touchend',e=>{
+      const ty=e.changedTouches[0].screenX;
+      if(ty<tx-60){nxt();rst()}if(ty>tx+60){go((cur-1+slides.length)%slides.length);rst()}
     });
+  })();
+
+  // 4. Quick Access
+  if (data.quickAccess && data.quickAccess.cards) {
+    document.getElementById('quickAccessGrid').innerHTML = data.quickAccess.cards.map((c,i) => 
+      `<a href="${c.link||'#'}" class="quick-card"><div class="quick-card__icon">${icons[iconMap[i]]||icons.dealer}</div><h6 class="quick-card__title">${c.title}</h6></a>`
+    ).join('');
   }
 
-  // --- Render News ---
-  if (data.news && data.news.length) {
-    const grid = document.getElementById('newsGrid');
-    data.news.forEach(n => {
-      const card = document.createElement('div');
-      card.className = 'news-card reveal';
-      card.innerHTML = `<div class="news-card__image"><img src="${n.image}" alt="${n.title}"></div>
-        <p class="news-card__date">${n.date}</p>
-        <h3 class="news-card__title">${n.title}</h3>
-        <p class="news-card__excerpt">${n.excerpt}</p>
-        <a href="${n.link || '#'}" class="news-card__link">View Profile &#8594;</a>`;
-      grid.appendChild(card);
-    });
+  // 5. Top Picks
+  if (data.topPicks) {
+    document.getElementById('topPicksHeading').textContent = data.topPicks.heading || 'Top picks';
+    if (data.topPicks.picks) {
+      document.getElementById('topPicksGrid').innerHTML = data.topPicks.picks.map(p => 
+        `<a href="${p.link||'#'}" class="pick-card reveal"><div class="pick-card__image"><img src="${p.image}" alt="${p.model}"></div><h3 class="pick-card__model">${p.model}</h3><p class="pick-card__tagline">${p.tagline}</p><span class="pick-card__link">VISIT MODEL PAGE →</span></a>`
+      ).join('');
+    }
+    document.getElementById('fullRangeTagline').textContent = data.topPicks.fullRangeTagline || '';
+    document.getElementById('fullRangeTitle').textContent = data.topPicks.fullRangeTitle || '';
+    document.getElementById('fullRangeLink').href = data.topPicks.fullRangeLink || '#';
   }
 
-  // --- Re-init reveal observer (newly created elements) ---
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+  // 6. Experience
+  if (data.experience) {
+    document.getElementById('expHeading').textContent = data.experience.heading || 'Experience TOPMOTO';
+    if (data.experience.cards) {
+      document.getElementById('experienceGrid').innerHTML = data.experience.cards.map(c => 
+        `<a href="${c.link||'#'}" class="exp-card reveal"><div class="exp-card__icon">${icons[iconMap[c.title]]||icons.service}</div><span class="exp-card__text">${c.title}</span></a>`
+      ).join('');
+    }
+  }
+
+  // 7. News
+  if (data.news) {
+    document.getElementById('newsHeading').textContent = data.news.heading || 'MORE ON TOPMOTO';
+    if (data.news.articles) {
+      document.getElementById('newsGrid').innerHTML = data.news.articles.map(n => 
+        `<div class="news-card reveal"><div class="news-card__image"><img src="${n.image}" alt="${n.title}"></div><p class="news-card__date">${n.date}</p><h3 class="news-card__title">${n.title}</h3><p class="news-card__excerpt">${n.excerpt}</p><a href="${n.link||'#'}" class="news-card__link">View Profile →</a></div>`
+      ).join('');
+    }
+  }
+
+  // 8. Newsletter
+  if (data.newsletter) {
+    document.getElementById('nlBrand').textContent = data.newsletter.brand || '';
+    document.getElementById('nlTagline').textContent = data.newsletter.tagline || '';
+    document.getElementById('nlDesc').textContent = data.newsletter.desc || '';
+    document.getElementById('nlPlaceholder').placeholder = data.newsletter.placeholder || '';
+    document.getElementById('nlBtn').textContent = data.newsletter.btnText || 'sign up';
+  }
+
+  // 9. Footer
+  if (data.footer && data.footer.columns) {
+    document.getElementById('footerColumns').innerHTML = data.footer.columns.map(col =>
+      `<div><h4 class="footer__col-title">${col.title}</h4><div class="footer__links">${col.links.map(l => `<a href="#">${l}</a>`).join('')}</div></div>`
+    ).join('') + `<div><h4 class="footer__col-title">Follow us</h4><div class="footer__social">
+      <a href="#" class="footer__social-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="#" class="footer__social-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      <a href="#" class="footer__social-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    </div></div>`;
+    document.getElementById('footerCopy').textContent = data.footer.copyright || '';
+  }
+
+  // Re-init reveals
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+  }, 100);
+
+  // Mobile menu
+  document.getElementById('navToggle').addEventListener('click',function(){
+    const m = document.getElementById('navPrimary');
+    m.classList.toggle('open');
+    if(m.classList.contains('open')) m.style.cssText='display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--neutral-0);padding:1rem clamp(1rem,3vw,4rem);border-bottom:1px solid var(--neutral-100);gap:0.5rem;z-index:998';
+    else m.style.display='';
+  });
 })();
 
-// ==========================================
-// MOBILE MENU
-// ==========================================
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-navToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('open');
-  if (navMenu.classList.contains('open')) {
-    navMenu.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--neutral-0);padding:1rem clamp(1rem,3vw,4rem);border-bottom:1px solid var(--neutral-100);gap:0.5rem;z-index:998';
-  } else {
-    navMenu.style.display = '';
-  }
-});
-
-// ==========================================
-// SCROLL REVEAL
-// ==========================================
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+const observer = new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:0.15,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
 </body>
