@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOPMOTO Motorcycles | United States</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================
+   CSS CUSTOM PROPERTIES — OKLCH Color System
+   ========================================== */
+:root {
+  --brand-blue: oklch(54% 0.155 247);
+  --brand-blue-light: oklch(68% 0.12 247);
+  --brand-blue-dark: oklch(38% 0.13 247);
+
+  --neutral-0: oklch(99% 0.003 247);
+  --neutral-50: oklch(95% 0.005 247);
+  --neutral-100: oklch(88% 0.006 247);
+  --neutral-200: oklch(78% 0.006 247);
+  --neutral-300: oklch(62% 0.006 247);
+  --neutral-400: oklch(48% 0.006 247);
+  --neutral-500: oklch(38% 0.006 247);
+  --neutral-600: oklch(28% 0.006 247);
+  --neutral-700: oklch(21% 0.005 247);
+  --neutral-800: oklch(14% 0.004 247);
+  --neutral-900: oklch(9% 0.003 247);
+
+  --font-display: 'Bebas Neue', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  --nav-height: 4rem;
+  --max-width: 1440px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--neutral-700);
+  background: var(--neutral-0);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+}
+
+/* ==========================================
+   1. TOP BAR (Bicycles/Motorcycles toggle, Country, MyHub)
+   ========================================== */
+.top-bar {
+  background: var(--neutral-800);
+  color: var(--neutral-200);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.top-bar__inner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 0.5rem clamp(1rem, 3vw, 4rem);
+}
+
+.top-bar__pill {
+  display: inline-flex;
+  padding: 0.25rem 1rem;
+  border-radius: 100px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  transition: all 0.2s;
+}
+
+.top-bar__pill--active {
+  background: var(--brand-blue);
+  color: white;
+}
+
+.top-bar__pill:not(.top-bar__pill--active) {
+  color: var(--neutral-300);
+}
+
+.top-bar__pill:not(.top-bar__pill--active):hover {
+  color: white;
+}
+
+.top-bar__link {
+  color: var(--neutral-300);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.top-bar__link:hover { color: white; }
+
+.top-bar__country {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  cursor: pointer;
+}
+
+.top-bar__country-flag {
+  width: 20px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--neutral-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+}
+
+/* ==========================================
+   2. MAIN NAVIGATION (matching GASGAS structure)
+   ========================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--neutral-0);
+  border-bottom: 1px solid var(--neutral-100);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+  gap: 1rem;
+}
+
+.nav__logo img {
+  height: 2.25rem;
+  width: auto;
+}
+
+.nav__primary {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  height: 100%;
+}
+
+.nav__item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav__item > a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+  white-space: nowrap;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav__item > a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 3px;
+  background: var(--brand-blue);
+  transform: scaleX(0);
+  transition: transform 0.25s var(--ease-out-expo);
+}
+
+.nav__item:hover > a { color: var(--neutral-800); }
+.nav__item:hover > a::after { transform: scaleX(1); }
+
+/* Mega Dropdown */
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--neutral-0);
+  border: 1px solid var(--neutral-100);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  padding: 2rem;
+  min-width: 800px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s var(--ease-out-quart);
+  z-index: 999;
+}
+
+.nav__item:hover .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.dropdown__col-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  color: var(--neutral-800);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--brand-blue);
+}
+
+.dropdown__link {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--neutral-500);
+  padding: 0.375rem 0;
+  transition: color 0.15s, padding-left 0.15s;
+}
+
+.dropdown__link:hover {
+  color: var(--neutral-800);
+  padding-left: 0.375rem;
+}
+
+.dropdown__link--sub {
+  font-size: 0.75rem;
+  padding-left: 0.75rem;
+  color: var(--neutral-400);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav__dealer-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-500);
+  transition: color 0.2s;
+}
+
+.nav__dealer-icon:hover { color: var(--brand-blue); }
+
+.nav__dealer-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--neutral-600);
+  transition: all 0.3s;
+}
+
+/* ==========================================
+   3. HERO CAROUSEL (matching GASGAS slider structure)
+   ========================================== */
+.hero {
+  position: relative;
+  height: calc(100vh - var(--nav-height));
+  min-height: 600px;
+  overflow: hidden;
+  background: var(--neutral-900);
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out-expo);
+  display: flex;
+  align-items: center;
+}
+
+.hero__slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.hero__slide-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__slide-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero__slide-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.2) 0%,
+    rgba(0,0,0,0.15) 50%,
+    rgba(0,0,0,0.6) 100%
+  );
+}
+
+.hero__slide-content {
+  position: relative;
+  z-index: 3;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+  padding-top: 3rem;
+}
+
+.hero__slide-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-blue-light);
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 1.25rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+.hero__slide-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--neutral-200);
+  margin-bottom: 0.5rem;
+}
+
+.hero__slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 7rem);
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  color: white;
+  text-transform: uppercase;
+  max-width: 14ch;
+  margin-bottom: 0.5rem;
+}
+
+.hero__slide-desc {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: var(--neutral-100);
+  max-width: 36ch;
+  margin-bottom: 2rem;
+  font-weight: 350;
+  line-height: 1.4;
+}
+
+.hero__slide-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.hero__slide-cta:hover {
+  background: var(--brand-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 132, 206, 0.35);
+}
+
+.hero__dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.hero__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hero__dot.active {
+  background: white;
+  border-color: white;
+}
+
+.hero__dot:hover {
+  border-color: white;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.3);
+  animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.6); }
+}
+
+/* ==========================================
+   4. QUICK ACCESS CARDS (Dealer Search, Promotions, etc.)
+   ========================================== */
+.quick-access {
+  padding: 2.5rem 0;
+  background: var(--neutral-50);
+}
+
+.quick-access__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+}
+
+.quick-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--neutral-0);
+  border: 1px solid var(--neutral-100);
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.quick-card:hover {
+  border-color: var(--brand-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.quick-card__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-50);
+  border-radius: 50%;
+  color: var(--brand-blue);
+}
+
+.quick-card__icon svg { width: 22px; height: 22px; }
+
+.quick-card__title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neutral-700);
+  line-height: 1.2;
+}
+
+/* ==========================================
+   5. TOP PICKS (3 featured bikes)
+   ========================================== */
+.top-picks {
+  padding: 5rem 0;
+}
+
+.top-picks__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--neutral-800);
+  margin-bottom: 2.5rem;
+}
+
+.top-picks__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+  margin-bottom: 4rem;
+}
+
+.pick-card {
+  display: block;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.pick-card:hover {
+  transform: translateY(-6px);
+}
+
+.pick-card__image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--neutral-50);
+  margin-bottom: 1.5rem;
+}
+
+.pick-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.pick-card:hover .pick-card__image img {
+  transform: scale(1.04);
+}
+
+.pick-card__model {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  color: var(--neutral-800);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.pick-card__tagline {
+  font-size: 0.9375rem;
+  color: var(--neutral-400);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.pick-card__link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: gap 0.3s;
+}
+
+.pick-card__link:hover { gap: 0.75rem; }
+
+/* Full Model Range link (beneath Top Picks) */
+.model-range {
+  text-align: center;
+  padding: 0 0 5rem 0;
+}
+
+.model-range__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.02em;
+  color: var(--neutral-500);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.model-range__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  color: var(--neutral-800);
+  margin-bottom: 1.5rem;
+}
+
+.model-range__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--brand-blue);
+  transition: all 0.3s;
+}
+
+.model-range__link:hover {
+  background: var(--brand-blue);
+  color: white;
+}
+
+/* ==========================================
+   6. EXPERIENCE TOPMOTO (icon links)
+   ========================================== */
+.experience {
+  padding: 5rem 0;
+  background: var(--neutral-50);
+}
+
+.experience__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--neutral-800);
+  margin-bottom: 2.5rem;
+}
+
+.experience__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+}
+
+.exp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  transition: transform 0.3s var(--ease-out-quart);
+}
+
+.exp-card:hover {
+  transform: translateY(-4px);
+}
+
+.exp-card__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-0);
+  border-radius: 50%;
+  color: var(--brand-blue);
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+
+.exp-card:hover .exp-card__icon {
+  background: var(--brand-blue);
+  color: white;
+}
+
+.exp-card__icon svg { width: 26px; height: 26px; }
+
+.exp-card__text {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--neutral-700);
+}
+
+/* ==========================================
+   7. MORE ON TOPMOTO (news cards)
+   ========================================== */
+.news {
+  padding: 5rem 0;
+}
+
+.news__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--neutral-800);
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+.news__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+  margin-bottom: 3rem;
+}
+
+.news-card {
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+}
+
+.news-card__image {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: var(--neutral-50);
+  margin-bottom: 1.25rem;
+}
+
+.news-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.news-card:hover .news-card__image img {
+  transform: scale(1.05);
+}
+
+.news-card__date {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neutral-400);
+  margin-bottom: 0.5rem;
+}
+
+.news-card__title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  letter-spacing: 0.02em;
+  color: var(--neutral-800);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.news-card__excerpt {
+  font-size: 0.875rem;
+  color: var(--neutral-400);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card__link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: gap 0.3s;
+}
+
+.news-card__link:hover { gap: 0.75rem; }
+
+.news__all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--brand-blue);
+  transition: all 0.3s;
+  margin-left: clamp(1rem, 3vw, 4rem);
+}
+
+.news__all-link:hover {
+  background: var(--brand-blue);
+  color: white;
+}
+
+/* ==========================================
+   8. NEWSLETTER
+   ========================================== */
+.newsletter {
+  padding: 5rem 0;
+  background: var(--neutral-900);
+  text-align: center;
+  color: white;
+}
+
+.newsletter__brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-blue-light);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.newsletter__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neutral-200);
+  margin-bottom: 1rem;
+}
+
+.newsletter__desc {
+  font-size: 0.9375rem;
+  color: var(--neutral-300);
+  max-width: 48ch;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  font-weight: 350;
+}
+
+.newsletter__form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.newsletter__input {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  border: 2px solid var(--neutral-600);
+  background: var(--neutral-800);
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter__input:focus {
+  border-color: var(--brand-blue);
+}
+
+.newsletter__input::placeholder {
+  color: var(--neutral-400);
+}
+
+.newsletter__btn {
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--brand-blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.newsletter__btn:hover {
+  background: var(--brand-blue-dark);
+}
+
+/* ==========================================
+   9. FOOTER
+   ========================================== */
+.footer {
+  padding: 5rem 0 2rem;
+  background: var(--neutral-800);
+  color: var(--neutral-200);
+  font-size: 0.8125rem;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 4rem);
+  margin-bottom: 3rem;
+}
+
+.footer__col-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__links a {
+  color: var(--neutral-300);
+  font-weight: 350;
+  transition: color 0.2s, padding-left 0.2s;
+}
+
+.footer__links a:hover {
+  color: white;
+  padding-left: 0.25rem;
+}
+
+.footer__social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.footer__social-link {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-300);
+  transition: color 0.2s;
+}
+
+.footer__social-link:hover { color: var(--brand-blue-light); }
+
+.footer__social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 1.5rem clamp(1rem, 3vw, 4rem) 0;
+  border-top: 1px solid var(--neutral-700);
+  font-size: 0.75rem;
+  color: var(--neutral-400);
+}
+
+.footer__back-top {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neutral-300);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer__back-top:hover { color: white; }
+
+/* ==========================================
+   SCROLL ANIMATIONS
+   ========================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-out-expo),
+              transform 0.6s var(--ease-out-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1024px) {
+  .nav__primary { display: none; }
+  .nav__toggle { display: flex; }
+
+  .top-picks__grid { grid-template-columns: repeat(2, 1fr); }
+  .news__grid { grid-template-columns: repeat(2, 1fr); }
+  .quick-access__grid { grid-template-columns: repeat(2, 1fr); }
+  .experience__grid { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .top-bar__inner { justify-content: center; gap: 1rem; }
+
+  .hero { height: 70vh; }
+  .hero__slide-title { font-size: clamp(2rem, 8vw, 3.5rem); }
+
+  .top-picks__grid { grid-template-columns: 1fr; }
+  .news__grid { grid-template-columns: 1fr; }
+  .quick-access__grid { grid-template-columns: 1fr; }
+  .experience__grid { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: repeat(2, 1fr); }
+
+  .newsletter__form { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .experience__grid { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==========================================
+     1. TOP BAR
+     ========================================== -->
+<div class="top-bar">
+  <div class="top-bar__inner">
+    <a href="#" class="top-bar__pill">Bicycles</a>
+    <a href="#" class="top-bar__pill top-bar__pill--active">Motorcycles</a>
+    <a href="#" class="top-bar__link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      MyHub
+    </a>
+    <div class="top-bar__country">
+      <span class="top-bar__country-flag">US</span>
+      CHANGE COUNTRY
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================
+     2. MAIN NAVIGATION
+     ========================================== -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">
+      <img src="images/logo-topmoto.png" alt="TOPMOTO">
+    </a>
+
+    <ul class="nav__primary" id="navMenu">
+      <!-- Motorcycles dropdown -->
+      <li class="nav__item">
+        <a href="#top-picks">Motorcycles</a>
+        <div class="nav__dropdown">
+          <div class="dropdown__grid">
+            <div>
+              <div class="dropdown__col-title">Motocross</div>
+              <a href="#" class="dropdown__link">450CC 4T</a>
+              <a href="#" class="dropdown__link">300CC 4T</a>
+              <a href="#" class="dropdown__link">250 2T</a>
+              <a href="#" class="dropdown__link">150CC 4T</a>
+              <a href="#" class="dropdown__link dropdown__link--sub">All Motocross</a>
+            </div>
+            <div>
+              <div class="dropdown__col-title">Dual-Sport</div>
+              <a href="#" class="dropdown__link">450CC 4T ONROAD</a>
+              <a href="#" class="dropdown__link">300CC 4T ONROAD</a>
+              <a href="#" class="dropdown__link dropdown__link--sub">All Dual-Sport</a>
+            </div>
+            <div>
+              <div class="dropdown__col-title">Quick Links</div>
+              <a href="#" class="dropdown__link">All Motorcycles</a>
+              <a href="#" class="dropdown__link">Electric</a>
+              <a href="#" class="dropdown__link">Kids</a>
+              <a href="#" class="dropdown__link">Accessories</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav__item"><a href="#">Technical Accessories</a></li>
+      <li class="nav__item"><a href="#">Apparel</a></li>
+      <li class="nav__item"><a href="#">Promotions</a></li>
+      <li class="nav__item"><a href="#">Experience TOPMOTO</a></li>
+      <li class="nav__item"><a href="#">Service</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <a href="#" class="nav__dealer-icon" title="Dealer Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ==========================================
+     3. HERO CAROUSEL
+     ========================================== -->
+<section class="hero" id="hero">
+  <!-- Slide 1 -->
+  <div class="hero__slide active" data-index="0">
+    <div class="hero__slide-bg">
+      <img src="images/450cc-4t.jpg" alt="TOPMOTO 450CC 4T">
+    </div>
+    <div class="hero__slide-content">
+      <span class="hero__slide-label">2026 COLLECTION</span>
+      <p class="hero__slide-tag">motocross</p>
+      <h1 class="hero__slide-title">Push the limits of performance</h1>
+      <p class="hero__slide-desc">Engineered for those who dare to defy limits. Precision-crafted machines built for the dirt.</p>
+      <a href="#top-picks" class="hero__slide-cta">Discover</a>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="hero__slide" data-index="1">
+    <div class="hero__slide-bg">
+      <img src="images/250-2t.jpg" alt="TOPMOTO 250 2T">
+    </div>
+    <div class="hero__slide-content">
+      <span class="hero__slide-label">New Arrival</span>
+      <p class="hero__slide-tag">2-stroke</p>
+      <h1 class="hero__slide-title">Make it sing!</h1>
+      <p class="hero__slide-desc">The unmistakable sound of a 2-stroke. Lightweight, explosive power that puts a smile on every ride.</p>
+      <a href="#top-picks" class="hero__slide-cta">Discover</a>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="hero__slide" data-index="2">
+    <div class="hero__slide-bg">
+      <img src="images/450cc-4t-onroad.jpg" alt="TOPMOTO 450CC 4T ONROAD">
+    </div>
+    <div class="hero__slide-content">
+      <span class="hero__slide-label">Dual-Sport</span>
+      <p class="hero__slide-tag">on-road certified</p>
+      <h1 class="hero__slide-title">From street to trail</h1>
+      <p class="hero__slide-desc">Street-legal machines that bring the dirt to your doorstep. Ride anywhere, no trailer needed.</p>
+      <a href="#top-picks" class="hero__slide-cta">Discover</a>
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="hero__slide" data-index="3">
+    <div class="hero__slide-bg">
+      <img src="images/300cc-4t.jpg" alt="TOPMOTO 300CC 4T">
+    </div>
+    <div class="hero__slide-content">
+      <span class="hero__slide-label">Enduro Ready</span>
+      <p class="hero__slide-tag">4-stroke</p>
+      <h1 class="hero__slide-title">Making hard enduro easy</h1>
+      <p class="hero__slide-desc">Balanced power delivery meets relentless torque. Conquer the toughest terrain with confidence.</p>
+      <a href="#top-picks" class="hero__slide-cta">Discover</a>
+    </div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="hero__slide" data-index="4">
+    <div class="hero__slide-bg">
+      <img src="images/150cc-4t.jpg" alt="TOPMOTO 150CC 4T">
+    </div>
+    <div class="hero__slide-content">
+      <span class="hero__slide-label">Entry Level</span>
+      <p class="hero__slide-tag">motocross</p>
+      <h1 class="hero__slide-title">Start your journey</h1>
+      <p class="hero__slide-desc">The perfect entry into off-road riding. Agile, forgiving, and built to grow with your skills.</p>
+      <a href="#top-picks" class="hero__slide-cta">All models</a>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="hero__dots" id="heroDots">
+    <button class="hero__dot active" data-index="0"></button>
+    <button class="hero__dot" data-index="1"></button>
+    <button class="hero__dot" data-index="2"></button>
+    <button class="hero__dot" data-index="3"></button>
+    <button class="hero__dot" data-index="4"></button>
+  </div>
+
+  <div class="hero__scroll">
+    <span>Scroll down</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ==========================================
+     4. QUICK ACCESS CARDS
+     ========================================== -->
+<section class="quick-access">
+  <div class="quick-access__grid">
+    <a href="#" class="quick-card">
+      <div class="quick-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8z"/></svg>
+      </div>
+      <h6 class="quick-card__title">Dealer Search</h6>
+    </a>
+
+    <a href="#" class="quick-card">
+      <div class="quick-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.5v3L12 14l-9-4.5v-3L12 2z"/><path d="M3 9.5v7L12 21l9-4.5v-7"/><path d="M12 14v7"/></svg>
+      </div>
+      <h6 class="quick-card__title">Promotions</h6>
+    </a>
+
+    <a href="#" class="quick-card">
+      <div class="quick-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+      <h6 class="quick-card__title">Spare Parts Finder</h6>
+    </a>
+
+    <a href="#" class="quick-card">
+      <div class="quick-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <h6 class="quick-card__title">Technical Accessories</h6>
+    </a>
+  </div>
+</section>
+
+<!-- ==========================================
+     5. TOP PICKS
+     ========================================== -->
+<section class="top-picks" id="top-picks">
+  <h2 class="top-picks__heading container reveal">Top picks</h2>
+
+  <div class="top-picks__grid">
+    <a href="#" class="pick-card reveal">
+      <div class="pick-card__image">
+        <img src="images/450cc-4t.jpg" alt="450CC 4T 2026">
+      </div>
+      <h3 class="pick-card__model">450CC 4T 2026</h3>
+      <p class="pick-card__tagline">Make it sing!</p>
+      <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>
+    </a>
+
+    <a href="#" class="pick-card reveal">
+      <div class="pick-card__image">
+        <img src="images/250-2t.jpg" alt="250 2T 2026">
+      </div>
+      <h3 class="pick-card__model">250 2T 2026</h3>
+      <p class="pick-card__tagline">Power on tap!</p>
+      <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>
+    </a>
+
+    <a href="#" class="pick-card reveal">
+      <div class="pick-card__image">
+        <img src="images/300cc-4t.jpg" alt="300CC 4T 2026">
+      </div>
+      <h3 class="pick-card__model">300CC 4T 2026</h3>
+      <p class="pick-card__tagline">Making hard enduro easy</p>
+      <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>
+    </a>
+  </div>
+
+  <div class="model-range reveal">
+    <p class="model-range__tagline">Put the fun back into riding</p>
+    <p class="model-range__title">Full model range</p>
+    <a href="#" class="model-range__link">All motorcycles &#8594;</a>
+  </div>
+</section>
+
+<!-- ==========================================
+     6. EXPERIENCE TOPMOTO
+     ========================================== -->
+<section class="experience" id="experience">
+  <h2 class="experience__heading container reveal">Experience TOPMOTO</h2>
+
+  <div class="experience__grid">
+    <a href="#" class="exp-card reveal">
+      <div class="exp-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <span class="exp-card__text">Service</span>
+    </a>
+
+    <a href="#" class="exp-card reveal">
+      <div class="exp-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l9 4.5v3L12 14l-9-4.5v-3L12 2z"/><path d="M3 9.5v7L12 21l9-4.5v-7"/></svg>
+      </div>
+      <span class="exp-card__text">Promotions</span>
+    </a>
+
+    <a href="#" class="exp-card reveal">
+      <div class="exp-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4-8-4m16 0v10l-8 4-8-4V7"/></svg>
+      </div>
+      <span class="exp-card__text">Apparel</span>
+    </a>
+
+    <a href="#" class="exp-card reveal">
+      <div class="exp-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <span class="exp-card__text">Racing</span>
+    </a>
+  </div>
+</section>
+
+<!-- ==========================================
+     7. MORE ON TOPMOTO (News)
+     ========================================== -->
+<section class="news">
+  <h2 class="news__heading container reveal">MORE ON TOPMOTO</h2>
+
+  <div class="news__grid">
+    <div class="news-card reveal">
+      <div class="news-card__image">
+        <img src="images/450cc-4t-onroad.jpg" alt="Rental & Service">
+      </div>
+      <p class="news-card__date">May 15, 2026</p>
+      <h3 class="news-card__title">TOPMOTO ISDE Bike Rental</h3>
+      <p class="news-card__excerpt">Planning on competing in the world's longest running FIM enduro event? Want to rent one of our awesome enduro bikes? Yes? Then read on&hellip;</p>
+      <a href="#" class="news-card__link">View Profile &#8594;</a>
+    </div>
+
+    <div class="news-card reveal">
+      <div class="news-card__image">
+        <img src="images/150cc-4t.jpg" alt="First Time Buyer">
+      </div>
+      <p class="news-card__date">Apr 30, 2026</p>
+      <h3 class="news-card__title">Hop on the Fun Train</h3>
+      <p class="news-card__excerpt">SPECIAL OFFERS AVAILABLE FOR FIRST TIME BUYERS* &mdash; Get into off-road riding with our exclusive first-time buyer program.</p>
+      <a href="#" class="news-card__link">View Profile &#8594;</a>
+    </div>
+
+    <div class="news-card reveal">
+      <div class="news-card__image">
+        <img src="images/300cc-4t-onroad.jpg" alt="Outdoor Card">
+      </div>
+      <p class="news-card__date">Apr 15, 2026</p>
+      <h3 class="news-card__title">Trick Out Your Kit</h3>
+      <p class="news-card__excerpt">Special Offers available on TOPMOTO Apparel, Technical Accessories &amp; Spare Parts. Gear up and ride in style.</p>
+      <a href="#" class="news-card__link">View Profile &#8594;</a>
+    </div>
+  </div>
+
+  <a href="#" class="news__all-link">All News &#8594;</a>
+</section>
+
+<!-- ==========================================
+     8. NEWSLETTER
+     ========================================== -->
+<section class="newsletter">
+  <div class="container">
+    <p class="newsletter__brand reveal">JOIN TOPMOTO</p>
+    <p class="newsletter__tagline reveal">STAY CONNECTED / GET ON THE DIRT !!!</p>
+    <p class="newsletter__desc reveal">Subscribe now to join our exclusive TOPMOTO community to be the first to know about our latest products, ensuring you never miss out on hot TOPMOTO news.</p>
+    <form class="newsletter__form reveal" onsubmit="event.preventDefault()">
+      <input type="email" class="newsletter__input" placeholder="Your email address" required>
+      <button type="submit" class="newsletter__btn">sign up</button>
+    </form>
+  </div>
+</section>
+
+<!-- ==========================================
+     9. FOOTER
+     ========================================== -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <h4 class="footer__col-title">The Company</h4>
+      <div class="footer__links">
+        <a href="#">Bajaj Mobility AG</a>
+        <a href="#">Contact</a>
+        <a href="#">Careers</a>
+        <a href="#">Become a dealer</a>
+        <a href="#">Press Center</a>
+        <a href="#">Media Library</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__col-title">Explore</h4>
+      <div class="footer__links">
+        <a href="#">Dealer search</a>
+        <a href="#">Newsletter</a>
+        <a href="#">News</a>
+        <a href="#">Configurator</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__col-title">Service</h4>
+      <div class="footer__links">
+        <a href="#">Maintenance</a>
+        <a href="#">Owner Manuals</a>
+        <a href="#">Recalls Check</a>
+        <a href="#">Spare Parts Finder</a>
+        <a href="#">TOPMOTO+ App</a>
+        <a href="#">Warranty</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__col-title">Legal</h4>
+      <div class="footer__links">
+        <a href="#">Imprint</a>
+        <a href="#">Legal Notices</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Code of Conduct</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__col-title">Follow us</h4>
+      <div class="footer__social">
+        <a href="#" class="footer__social-link" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="footer__social-link" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" class="footer__social-link" title="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>TOPMOTO Copyright 2026, all rights reserved</span>
+    <a href="#hero" class="footer__back-top">BACK TO TOP &#8593;</a>
+  </div>
+</footer>
+
+<script>
+// ==========================================
+// HERO CAROUSEL
+// ==========================================
+const slides = document.querySelectorAll('.hero__slide');
+const dots = document.querySelectorAll('.hero__dot');
+let currentSlide = 0;
+const totalSlides = slides.length;
+let autoPlayInterval;
+
+function goToSlide(index) {
+  slides.forEach(s => s.classList.remove('active'));
+  dots.forEach(d => d.classList.remove('active'));
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+  currentSlide = index;
+}
+
+function nextSlide() {
+  goToSlide((currentSlide + 1) % totalSlides);
+}
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    goToSlide(parseInt(dot.dataset.index));
+    resetAutoPlay();
+  });
+});
+
+function startAutoPlay() {
+  autoPlayInterval = setInterval(nextSlide, 5000);
+}
+
+function resetAutoPlay() {
+  clearInterval(autoPlayInterval);
+  startAutoPlay();
+}
+
+startAutoPlay();
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') { goToSlide((currentSlide - 1 + totalSlides) % totalSlides); resetAutoPlay(); }
+  if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
+});
+
+// Touch swipe
+let touchStartX = 0;
+let touchEndX = 0;
+const heroEl = document.getElementById('hero');
+heroEl.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+heroEl.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  if (touchEndX < touchStartX - 60) { nextSlide(); resetAutoPlay(); }
+  if (touchEndX > touchStartX + 60) { goToSlide((currentSlide - 1 + totalSlides) % totalSlides); resetAutoPlay(); }
+});
+
+// ==========================================
+// MOBILE MENU
+// ==========================================
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('open');
+  if (navMenu.classList.contains('open')) {
+    navMenu.style.display = 'flex';
+    navMenu.style.flexDirection = 'column';
+    navMenu.style.position = 'absolute';
+    navMenu.style.top = '100%';
+    navMenu.style.left = '0';
+    navMenu.style.right = '0';
+    navMenu.style.background = 'var(--neutral-0)';
+    navMenu.style.padding = '1rem clamp(1rem, 3vw, 4rem)';
+    navMenu.style.borderBottom = '1px solid var(--neutral-100)';
+    navMenu.style.gap = '0.5rem';
+    navMenu.style.zIndex = '998';
+  } else {
+    navMenu.style.display = '';
+  }
+});
+
+// ==========================================
+// SCROLL REVEAL
+// ==========================================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
