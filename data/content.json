@@ -1,101 +1,115 @@
 {
+  "topBar": {
+    "motorcycleText": "Motorcycles"
+  },
+
+  "navigation": {
+    "menuItems": [
+      { "text": "Motorcycles", "link": "#top-picks", "hasDropdown": true },
+      { "text": "Technical Accessories", "link": "#", "hasDropdown": false },
+      { "text": "Apparel", "link": "#", "hasDropdown": false },
+      { "text": "Promotions", "link": "#", "hasDropdown": false },
+      { "text": "Experience TOPMOTO", "link": "#", "hasDropdown": false },
+      { "text": "Service", "link": "#", "hasDropdown": false }
+    ],
+    "dropdowns": {
+      "Motorcycles": [
+        { "col": "Motocross", "items": ["450CC 4T", "300CC 4T", "250 2T", "150CC 4T", "All Motocross"] },
+        { "col": "Dual-Sport", "items": ["450CC 4T ONROAD", "300CC 4T ONROAD", "All Dual-Sport"] },
+        { "col": "Quick Links", "items": ["All Motorcycles", "Electric", "Kids", "Accessories"] }
+      ]
+    }
+  },
+
   "heroSlides": [
-    {
-      "label": "2026 COLLECTION",
-      "tag": "motocross",
-      "title": "Push the limits of performance",
-      "desc": "Engineered for those who dare to defy limits. Precision-crafted machines built for the dirt.",
-      "ctaText": "Discover",
-      "ctaLink": "#top-picks",
-      "image": "images/450cc-4t.jpg"
-    },
-    {
-      "label": "New Arrival",
-      "tag": "2-stroke",
-      "title": "Make it sing!",
-      "desc": "The unmistakable sound of a 2-stroke. Lightweight, explosive power that puts a smile on every ride.",
-      "ctaText": "Discover",
-      "ctaLink": "#top-picks",
-      "image": "images/250-2t.jpg"
-    },
-    {
-      "label": "Dual-Sport",
-      "tag": "on-road certified",
-      "title": "From street to trail",
-      "desc": "Street-legal machines that bring the dirt to your doorstep. Ride anywhere, no trailer needed.",
-      "ctaText": "Discover",
-      "ctaLink": "#top-picks",
-      "image": "images/450cc-4t-onroad.jpg"
-    },
-    {
-      "label": "Enduro Ready",
-      "tag": "4-stroke",
-      "title": "Making hard enduro easy",
-      "desc": "Balanced power delivery meets relentless torque. Conquer the toughest terrain with confidence.",
-      "ctaText": "Discover",
-      "ctaLink": "#top-picks",
-      "image": "images/300cc-4t.jpg"
-    },
-    {
-      "label": "Entry Level",
-      "tag": "motocross",
-      "title": "Start your journey",
-      "desc": "The perfect entry into off-road riding. Agile, forgiving, and built to grow with your skills.",
-      "ctaText": "All models",
-      "ctaLink": "#top-picks",
-      "image": "images/150cc-4t.jpg"
-    }
+    { "label": "2026 COLLECTION", "tag": "motocross", "title": "Push the limits of performance", "desc": "Engineered for those who dare to defy limits. Precision-crafted machines built for the dirt.", "ctaText": "Discover", "ctaLink": "#top-picks", "image": "images/450cc-4t.jpg" },
+    { "label": "New Arrival", "tag": "2-stroke", "title": "Make it sing!", "desc": "The unmistakable sound of a 2-stroke. Lightweight, explosive power that puts a smile on every ride.", "ctaText": "Discover", "ctaLink": "#top-picks", "image": "images/250-2t.jpg" },
+    { "label": "Dual-Sport", "tag": "on-road certified", "title": "From street to trail", "desc": "Street-legal machines that bring the dirt to your doorstep. Ride anywhere, no trailer needed.", "ctaText": "Discover", "ctaLink": "#top-picks", "image": "images/450cc-4t-onroad.jpg" },
+    { "label": "Enduro Ready", "tag": "4-stroke", "title": "Making hard enduro easy", "desc": "Balanced power delivery meets relentless torque. Conquer the toughest terrain with confidence.", "ctaText": "Discover", "ctaLink": "#top-picks", "image": "images/300cc-4t.jpg" },
+    { "label": "Entry Level", "tag": "motocross", "title": "Start your journey", "desc": "The perfect entry into off-road riding. Agile, forgiving, and built to grow with your skills.", "ctaText": "All models", "ctaLink": "#top-picks", "image": "images/150cc-4t.jpg" }
   ],
-  "topPicks": [
-    {
-      "model": "450CC 4T 2026",
-      "tagline": "Make it sing!",
-      "image": "images/450cc-4t.jpg",
-      "link": "#"
-    },
-    {
-      "model": "250 2T 2026",
-      "tagline": "Power on tap!",
-      "image": "images/250-2t.jpg",
-      "link": "#"
-    },
-    {
-      "model": "300CC 4T 2026",
-      "tagline": "Making hard enduro easy",
-      "image": "images/300cc-4t.jpg",
-      "link": "#"
-    }
-  ],
-  "news": [
-    {
-      "date": "May 15, 2026",
-      "title": "TOPMOTO ISDE Bike Rental",
-      "excerpt": "Planning on competing in the world's longest running FIM enduro event? Want to rent one of our awesome enduro bikes? Yes? Then read on…",
-      "image": "images/450cc-4t-onroad.jpg",
-      "link": "#"
-    },
-    {
-      "date": "Apr 30, 2026",
-      "title": "Hop on the Fun Train",
-      "excerpt": "SPECIAL OFFERS AVAILABLE FOR FIRST TIME BUYERS* — Get into off-road riding with our exclusive first-time buyer program.",
-      "image": "images/150cc-4t.jpg",
-      "link": "#"
-    },
-    {
-      "date": "Apr 15, 2026",
-      "title": "Trick Out Your Kit",
-      "excerpt": "Special Offers available on TOPMOTO Apparel, Technical Accessories & Spare Parts. Gear up and ride in style.",
-      "image": "images/300cc-4t-onroad.jpg",
-      "link": "#"
-    }
-  ],
+
+  "quickAccess": {
+    "cards": [
+      { "title": "Dealer Search", "link": "#" },
+      { "title": "Promotions", "link": "#" },
+      { "title": "Spare Parts Finder", "link": "#" },
+      { "title": "Technical Accessories", "link": "#" }
+    ]
+  },
+
+  "topPicks": {
+    "heading": "Top picks",
+    "picks": [
+      { "model": "450CC 4T 2026", "tagline": "Make it sing!", "image": "images/450cc-4t.jpg", "link": "#" },
+      { "model": "250 2T 2026", "tagline": "Power on tap!", "image": "images/250-2t.jpg", "link": "#" },
+      { "model": "300CC 4T 2026", "tagline": "Making hard enduro easy", "image": "images/300cc-4t.jpg", "link": "#" }
+    ],
+    "fullRangeTagline": "Put the fun back into riding",
+    "fullRangeTitle": "Full model range",
+    "fullRangeLink": "#"
+  },
+
+  "experience": {
+    "heading": "Experience TOPMOTO",
+    "cards": [
+      { "title": "Service", "link": "#" },
+      { "title": "Promotions", "link": "#" },
+      { "title": "Apparel", "link": "#" },
+      { "title": "Racing", "link": "#" }
+    ]
+  },
+
+  "news": {
+    "heading": "MORE ON TOPMOTO",
+    "articles": [
+      { "date": "May 15, 2026", "title": "TOPMOTO ISDE Bike Rental", "excerpt": "Planning on competing in the world's longest running FIM enduro event? Want to rent one of our awesome enduro bikes? Yes? Then read on…", "image": "images/450cc-4t-onroad.jpg", "link": "#" },
+      { "date": "Apr 30, 2026", "title": "Hop on the Fun Train", "excerpt": "SPECIAL OFFERS AVAILABLE FOR FIRST TIME BUYERS* — Get into off-road riding with our exclusive first-time buyer program.", "image": "images/150cc-4t.jpg", "link": "#" },
+      { "date": "Apr 15, 2026", "title": "Trick Out Your Kit", "excerpt": "Special Offers available on TOPMOTO Apparel, Technical Accessories & Spare Parts. Gear up and ride in style.", "image": "images/300cc-4t-onroad.jpg", "link": "#" }
+    ]
+  },
+
+  "newsletter": {
+    "brand": "JOIN TOPMOTO",
+    "tagline": "STAY CONNECTED / GET ON THE DIRT !!!",
+    "desc": "Subscribe now to join our exclusive TOPMOTO community to be the first to know about our latest products, ensuring you never miss out on hot TOPMOTO news.",
+    "placeholder": "Your email address",
+    "btnText": "sign up"
+  },
+
+  "footer": {
+    "columns": [
+      {
+        "title": "The Company",
+        "links": ["Bajaj Mobility AG", "Contact", "Careers", "Become a dealer", "Press Center", "Media Library"]
+      },
+      {
+        "title": "Explore",
+        "links": ["Dealer search", "Newsletter", "News", "Configurator"]
+      },
+      {
+        "title": "Service",
+        "links": ["Maintenance", "Owner Manuals", "Recalls Check", "Spare Parts Finder", "TOPMOTO+ App", "Warranty"]
+      },
+      {
+        "title": "Legal",
+        "links": ["Imprint", "Legal Notices", "Terms of Use", "Privacy Policy", "Code of Conduct"]
+      }
+    ],
+    "copyright": "TOPMOTO Copyright 2026, all rights reserved"
+  },
+
   "sections": {
+    "top_bar": true,
+    "navigation": true,
     "quick_access": true,
     "top_picks": true,
     "experience": true,
     "news_section": true,
-    "newsletter": true
+    "newsletter": true,
+    "footer": true
   },
+
   "siteSettings": {
     "title": "TOPMOTO Motorcycles | United States",
     "ga_id": "",
