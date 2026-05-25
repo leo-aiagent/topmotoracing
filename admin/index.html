@@ -1,557 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow">
 <title>TOPMOTO Admin</title>
 <style>
-:root {
-  --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
-  --blue: #0084ce; --blue-light: #0ea5e9; --text: #e1e4ed; --text-muted: #8b8fa3;
-  --danger: #ef4444; --success: #22c55e; --warning: #f59e0b;
-  --radius: 6px; --ease: cubic-bezier(0.16,1,0.3,1);
-}
+:root{--bg:#0f1117;--surface:#1a1d27;--border:#2a2d3a;--blue:#0084ce;--blue-light:#0ea5e9;--text:#e1e4ed;--text-muted:#8b8fa3;--danger:#ef4444;--success:#22c55e;--radius:6px;--ease:cubic-bezier(0.16,1,0.3,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-a{color:var(--blue-light);text-decoration:none}
-button,input,select,textarea{font-family:inherit;font-size:0.875rem}
-input,select,textarea{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:0.625rem 0.75rem;border-radius:var(--radius);outline:none;width:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+input,select,textarea{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:0.5rem 0.75rem;border-radius:var(--radius);outline:none;width:100%;font-family:inherit;font-size:0.8125rem}
 input:focus,select:focus,textarea:focus{border-color:var(--blue)}
-button{cursor:pointer;border:none;border-radius:var(--radius);padding:0.625rem 1.25rem;font-weight:500;transition:all 0.2s var(--ease)}
-.btn-primary{background:var(--blue);color:#fff}
-.btn-primary:hover{background:var(--blue-light)}
-.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}
-.btn-secondary:hover{border-color:var(--blue)}
-.btn-danger{background:var(--danger);color:#fff}
-.btn-danger:hover{opacity:0.85}
-.btn-sm{padding:0.375rem 0.75rem;font-size:0.75rem}
-
-/* LOGIN */
+button{cursor:pointer;border:none;border-radius:var(--radius);padding:0.5rem 1rem;font-weight:500;font-size:0.8125rem;transition:all 0.2s var(--ease)}
+.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:var(--blue-light)}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}.btn-secondary:hover{border-color:var(--blue)}
+.btn-danger{background:var(--danger);color:#fff}.btn-danger:hover{opacity:.85}
+.btn-sm{padding:0.3rem 0.6rem;font-size:0.75rem}
 .login-page{display:flex;align-items:center;justify-content:center;min-height:100vh}
-.login-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2.5rem;width:400px;max-width:90vw}
+.login-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;width:400px;max-width:90vw}
 .login-box h1{font-size:1.5rem;margin-bottom:1.5rem;text-align:center}
-.login-box label{display:block;font-size:0.8125rem;color:var(--text-muted);margin-bottom:0.375rem;margin-top:1rem}
-.login-box .error{color:var(--danger);font-size:0.8125rem;margin-top:0.75rem;text-align:center}
+.login-box label{display:block;font-size:0.75rem;color:var(--text-muted);margin:0.75rem 0 0.25rem}
+.login-box .error{color:var(--danger);font-size:0.75rem;margin-top:0.75rem;text-align:center}
 .login-box button{width:100%;margin-top:1.5rem}
-
-/* LAYOUT */
-.admin-layout{display:none;min-height:100vh}
-.admin-layout.active{display:flex}
-.sidebar{width:220px;background:var(--surface);border-right:1px solid var(--border);padding:1rem;display:flex;flex-direction:column;gap:0.25rem;flex-shrink:0}
-.sidebar h2{font-size:1rem;padding:0.75rem;margin-bottom:0.5rem;color:var(--blue-light)}
-.sidebar a{display:block;padding:0.625rem 0.75rem;border-radius:var(--radius);color:var(--text-muted);font-size:0.8125rem;transition:all 0.15s}
+.admin-layout{display:none;min-height:100vh}.admin-layout.active{display:flex}
+.sidebar{width:220px;background:var(--surface);border-right:1px solid var(--border);padding:1rem;display:flex;flex-direction:column;gap:0.125rem;flex-shrink:0}
+.sidebar h2{font-size:0.9375rem;padding:0.75rem;margin-bottom:0.5rem;color:var(--blue-light)}
+.sidebar a{display:block;padding:0.5rem 0.75rem;border-radius:var(--radius);color:var(--text-muted);font-size:0.75rem;transition:all 0.15s}
 .sidebar a:hover,.sidebar a.active{background:var(--bg);color:var(--text)}
-.main{flex:1;overflow-y:auto;padding:2rem}
-.page{display:none}
-.page.active{display:block}
-
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
-.stat-card .val{font-size:1.75rem;font-weight:700;color:var(--blue-light)}
-.stat-card .lbl{font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem}
-
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem}
-.card h3{font-size:1rem;margin-bottom:1rem;color:var(--text)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem}
-.form-row-3{grid-template-columns:1fr 1fr 1fr}
-
-.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.75rem}
+.main{flex:1;overflow-y:auto;padding:1.5rem}
+.page{display:none}.page.active{display:block}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem}
+.card h3{font-size:0.9375rem;margin-bottom:0.75rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.5rem}
+.form-row label{font-size:0.6875rem;color:var(--text-muted);display:block;margin-bottom:0.125rem}
+.editor-item{border:1px solid var(--border);border-radius:var(--radius);padding:0.75rem;margin-bottom:0.5rem;background:var(--bg)}
+.editor-item h4{font-size:0.8125rem;margin-bottom:0.5rem;color:var(--text-muted)}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.5rem}
 .media-item{position:relative;aspect-ratio:4/3;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer}
 .media-item img{width:100%;height:100%;object-fit:cover}
 .media-item:hover{border-color:var(--blue)}
-.media-item .name{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);padding:0.25rem 0.5rem;font-size:0.6875rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .media-item .del{position:absolute;top:0.25rem;right:0.25rem;background:var(--danger);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;opacity:0;transition:opacity 0.2s;cursor:pointer}
 .media-item:hover .del{opacity:1}
-
-.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:2rem;text-align:center;color:var(--text-muted);cursor:pointer;transition:border-color 0.2s;margin-bottom:1rem}
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;color:var(--text-muted);cursor:pointer;margin-bottom:1rem}
 .upload-zone:hover{border-color:var(--blue)}
-
-.section-toggle{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;background:var(--bg);border-radius:var(--radius);margin-bottom:0.5rem}
-.section-toggle .name{font-weight:500;font-size:0.875rem}
-.toggle-switch{position:relative;width:44px;height:24px}
+.section-toggle{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0.75rem;background:var(--bg);border-radius:var(--radius);margin-bottom:0.375rem}
+.toggle-switch{position:relative;width:40px;height:22px}
 .toggle-switch input{opacity:0;width:0;height:0}
-.toggle-switch .slider{position:absolute;inset:0;background:var(--border);border-radius:24px;transition:0.3s;cursor:pointer}
-.toggle-switch .slider::before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:0.3s}
+.toggle-switch .slider{position:absolute;inset:0;background:var(--border);border-radius:22px;transition:0.3s;cursor:pointer}
+.toggle-switch .slider::before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:0.3s}
 .toggle-switch input:checked+.slider{background:var(--blue)}
-.toggle-switch input:checked+.slider::before{transform:translateX(20px)}
-
+.toggle-switch input:checked+.slider::before{transform:translateX(18px)}
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--success);color:#fff;padding:0.75rem 1.5rem;border-radius:var(--radius);z-index:9999;transform:translateY(100px);opacity:0;transition:all 0.3s var(--ease)}
-.toast.show{transform:translateY(0);opacity:1}
-.toast.error{background:var(--danger)}
-
-.editor-tabs{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:1px solid var(--border)}
-.editor-tab{padding:0.625rem 1.25rem;font-size:0.8125rem;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.toast.show{transform:translateY(0);opacity:1}.toast.error{background:var(--danger)}
+.editor-tabs{display:flex;gap:0;margin-bottom:1rem;border-bottom:1px solid var(--border)}
+.editor-tab{padding:0.375rem 0.875rem;font-size:0.75rem;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap}
 .editor-tab.active{color:var(--blue-light);border-bottom-color:var(--blue)}
-.editor-tab:hover{color:var(--text)}
-
-.editor-item{border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:0.75rem;background:var(--bg)}
-.editor-item h4{font-size:0.875rem;margin-bottom:0.75rem;color:var(--text-muted)}
 </style>
 </head>
 <body>
 
-<!-- LOGIN PAGE -->
 <div class="login-page" id="loginPage">
   <div class="login-box">
-    <h1>🔐 TOPMOTO Admin</h1>
-    <label>Password</label>
-    <input type="password" id="loginPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
-    <label>GitHub Token (PAT)</label>
-    <input type="password" id="loginToken" placeholder="github_pat_..." onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="btn-primary" onclick="doLogin()">Sign In</button>
-    <div class="error" id="loginError"></div>
+    <h1>TOPMOTO Admin</h1>
+    <label>Password</label><input type="password" id="loginPass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
+    <label>GitHub Token</label><input type="password" id="loginToken" placeholder="github_pat_..." onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn-primary" onclick="doLogin()">Sign In</button><div class="error" id="loginError"></div>
   </div>
 </div>
 
-<!-- ADMIN LAYOUT -->
 <div class="admin-layout" id="adminLayout">
   <aside class="sidebar">
     <h2>TOPMOTO Admin</h2>
     <a href="#" data-page="dashboard" class="active" onclick="showPage('dashboard',this)">📊 Dashboard</a>
-    <a href="#" data-page="media" onclick="showPage('media',this)">🖼️ Media Library</a>
-    <a href="#" data-page="content" onclick="showPage('content',this)">📝 Content Editor</a>
-    <a href="#" data-page="sections" onclick="showPage('sections',this)">🔲 Sections Manager</a>
+    <a href="#" data-page="media" onclick="showPage('media',this)">🖼️ Media</a>
+    <a href="#" data-page="sections" onclick="showPage('sections',this)">🔲 Visibility</a>
+    <a href="#" data-page="topbar" onclick="showPage('topbar',this)">1️⃣ Top Bar</a>
+    <a href="#" data-page="nav" onclick="showPage('nav',this)">2️⃣ Navigation</a>
+    <a href="#" data-page="hero" onclick="showPage('hero',this)">3️⃣ Hero</a>
+    <a href="#" data-page="quick" onclick="showPage('quick',this)">4️⃣ Quick Access</a>
+    <a href="#" data-page="picks" onclick="showPage('picks',this)">5️⃣ Top Picks</a>
+    <a href="#" data-page="exp" onclick="showPage('exp',this)">6️⃣ Experience</a>
+    <a href="#" data-page="news_page" onclick="showPage('news_page',this)">7️⃣ News</a>
+    <a href="#" data-page="nl" onclick="showPage('nl',this)">8️⃣ Newsletter</a>
+    <a href="#" data-page="footer_page" onclick="showPage('footer_page',this)">9️⃣ Footer</a>
     <a href="#" data-page="settings" onclick="showPage('settings',this)">⚙️ Settings</a>
-    <div style="margin-top:auto;padding-top:1rem;border-top:1px solid var(--border)">
-      <a href="#" style="color:var(--danger)" onclick="doLogout()">🚪 Logout</a>
-    </div>
+    <div style="margin-top:auto;padding-top:1rem;border-top:1px solid var(--border)"><a href="#" style="color:var(--danger)" onclick="doLogout()">🚪 Logout</a></div>
   </aside>
 
   <main class="main">
-    <!-- DASHBOARD -->
-    <div class="page active" id="page-dashboard">
-      <div class="card"><h3>📊 Site Overview</h3>
-        <div class="stats-grid">
-          <div class="stat-card"><div class="val" id="statImages">0</div><div class="lbl">Media Files</div></div>
-          <div class="stat-card"><div class="val" id="statSlides">0</div><div class="lbl">Hero Slides</div></div>
-          <div class="stat-card"><div class="val" id="statPicks">0</div><div class="lbl">Top Picks</div></div>
-          <div class="stat-card"><div class="val" id="statNews">0</div><div class="lbl">News Articles</div></div>
-        </div>
-      </div>
-      <div class="card"><h3>📈 Google Analytics</h3>
-        <p style="color:var(--text-muted);font-size:0.8125rem">Configure Measurement ID in Settings to view analytics data. <a href="https://analytics.google.com" target="_blank">Open Google Analytics →</a></p>
-      </div>
-    </div>
+    <div class="page active" id="page-dashboard"><div class="card"><h3>📊 Site Overview</h3><p style="color:var(--text-muted);font-size:0.8125rem" id="dashInfo">Loading...</p></div></div>
+    <div class="page" id="page-media"><div class="card"><h3>🖼️ Upload</h3><div class="upload-zone" onclick="document.getElementById('fileInput').click()">📁 Click or drag to upload</div><input type="file" id="fileInput" accept="image/*" multiple onchange="handleUpload(this.files)" style="display:none"></div><div class="card"><h3>📂 Media Library</h3><div class="media-grid" id="mediaGrid">Loading...</div></div></div>
+    <div class="page" id="page-sections"><div class="card"><h3>🔲 Section Visibility</h3><div id="sectionToggles"></div><button class="btn-primary" style="margin-top:1rem" onclick="saveSections()">💾 Save Visibility</button></div></div>
 
-    <!-- MEDIA LIBRARY -->
-    <div class="page" id="page-media">
-      <div class="card">
-        <h3>🖼️ Upload New Image</h3>
-        <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
-          📁 Click or drag files here to upload
-        </div>
-        <input type="file" id="fileInput" accept="image/*" multiple style="display:none" onchange="handleFileUpload(this.files)">
-      </div>
-      <div class="card">
-        <h3>📂 Media Library</h3>
-        <div class="media-grid" id="mediaGrid">Loading...</div>
-      </div>
-    </div>
-
-    <!-- CONTENT EDITOR -->
-    <div class="page" id="page-content">
-      <div class="editor-tabs">
-        <div class="editor-tab active" onclick="switchEditorTab('hero',this)">Hero Slides</div>
-        <div class="editor-tab" onclick="switchEditorTab('picks',this)">Top Picks</div>
-        <div class="editor-tab" onclick="switchEditorTab('news_tab',this)">News</div>
-      </div>
-      <div id="editorHero"></div>
-      <div id="editorPicks" style="display:none"></div>
-      <div id="editorNews" style="display:none"></div>
-      <button class="btn-primary" style="margin-top:1rem" onclick="saveContent()">💾 Save Content & Publish</button>
-    </div>
-
-    <!-- SECTIONS MANAGER -->
-    <div class="page" id="page-sections">
-      <div class="card">
-        <h3>🔲 Show / Hide Sections</h3>
-        <p style="color:var(--text-muted);font-size:0.8125rem;margin-bottom:1rem">Toggle sections on or off. Changes take effect after saving.</p>
-        <div id="sectionToggles"></div>
-        <button class="btn-primary" style="margin-top:1rem" onclick="saveSections()">💾 Save Sections & Publish</button>
-      </div>
-    </div>
-
-    <!-- SETTINGS -->
-    <div class="page" id="page-settings">
-      <div class="card">
-        <h3>⚙️ Site Settings</h3>
-        <div class="form-row"><div><label>Site Title</label><input id="setTitle"></div><div><label>Google Analytics ID</label><input id="setGA" placeholder="G-XXXXXXXXXX"></div></div>
-        <div class="form-row"><div><label>Brand Blue</label><input id="setBlue"></div><div><label>Change Password (leave empty = no change)</label><input type="password" id="setPass" placeholder="New password"></div></div>
-        <button class="btn-primary" style="margin-top:1rem" onclick="saveSettings()">💾 Save Settings</button>
-      </div>
-    </div>
-
+    <!-- Dynamic content editors for each section -->
+    <div class="page" id="page-topbar"><div class="card"><h3>1️⃣ Top Bar</h3><div id="editorTopBar"></div><button class="btn-primary" style="margin-top:0.5rem" onclick="saveSection('topBar')">💾 Save</button></div></div>
+    <div class="page" id="page-nav"><div class="card"><h3>2️⃣ Navigation Menu</h3><div id="editorNav"></div><button class="btn-primary" style="margin-top:0.5rem" onclick="saveSection('navigation')">💾 Save</button></div></div>
+    <div class="page" id="page-hero"><div class="card"><h3>3️⃣ Hero Slides</h3><div id="editorHero"></div><button class="btn-secondary btn-sm" onclick="addHeroSlide()" style="margin-bottom:0.5rem">+ Add Slide</button><br><button class="btn-primary" onclick="saveSection('hero')">💾 Save</button></div></div>
+    <div class="page" id="page-quick"><div class="card"><h3>4️⃣ Quick Access Cards</h3><div id="editorQuick"></div><button class="btn-primary" style="margin-top:0.5rem" onclick="saveSection('quick')">💾 Save</button></div></div>
+    <div class="page" id="page-picks"><div class="card"><h3>5️⃣ Top Picks</h3><div id="editorPicks"></div><button class="btn-secondary btn-sm" onclick="addPick()" style="margin-bottom:0.5rem">+ Add Pick</button><br><button class="btn-primary" onclick="saveSection('picks')">💾 Save</button></div></div>
+    <div class="page" id="page-exp"><div class="card"><h3>6️⃣ Experience</h3><div id="editorExp"></div><button class="btn-primary" style="margin-top:0.5rem" onclick="saveSection('exp')">💾 Save</button></div></div>
+    <div class="page" id="page-news_page"><div class="card"><h3>7️⃣ News</h3><div id="editorNews"></div><button class="btn-secondary btn-sm" onclick="addNewsItem()" style="margin-bottom:0.5rem">+ Add Article</button><br><button class="btn-primary" onclick="saveSection('news')">💾 Save</button></div></div>
+    <div class="page" id="page-nl"><div class="card"><h3>8️⃣ Newsletter</h3><div id="editorNl"></div><button class="btn-primary" style="margin-top:0.5rem" onclick="saveSection('nl')">💾 Save</button></div></div>
+    <div class="page" id="page-footer_page"><div class="card"><h3>9️⃣ Footer</h3><div id="editorFooter"></div><button class="btn-primary" style="margin-top:0.5rem" onclick="saveSection('footer')">💾 Save</button></div></div>
+    <div class="page" id="page-settings"><div class="card"><h3>⚙️ Settings</h3><div class="form-row"><div><label>Site Title</label><input id="setTitle"></div><div><label>GA ID</label><input id="setGA" placeholder="G-XXXXXXXXXX"></div></div><div class="form-row"><div><label>Brand Blue</label><input id="setBlue"></div><div><label>Change Password (blank=keep)</label><input type="password" id="setPass" placeholder="New password"></div></div><button class="btn-primary" style="margin-top:0.5rem" onclick="saveSettings()">💾 Save Settings</button></div></div>
     <div id="toast" class="toast"></div>
   </main>
 </div>
 
 <script>
-// ==========================================
-// AUTH
-// ==========================================
-const ADMIN_PASS_HASH = '6563998ed317cc69a2be6389b5c95d0751dcb3491d93b3b669b6558b1cecc50a'; // topmoto2026
-const API_BASE = 'https://api.github.com/repos/leo-aiagent/topmotoracing/contents';
+const HASH='6563998ed317cc69a2be6389b5c95d0751dcb3491d93b3b669b6558b1cecc50a';
+const API='https://api.github.com/repos/leo-aiagent/topmotoracing/contents';
+let GTOKEN='', contentData=null;
 
-async function sha256(msg) {
-  const buf = new TextEncoder().encode(msg);
-  const hash = await crypto.subtle.digest('SHA-256', buf);
-  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
+async function sha256(m){const b=new TextEncoder().encode(m);const h=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+
+async function doLogin(){
+  const p=document.getElementById('loginPass').value,t=document.getElementById('loginToken').value.trim(),e=document.getElementById('loginError');
+  if(!p||!t){e.textContent='Please enter password and token';return}
+  if(!t.startsWith('github_pat_')&&!t.startsWith('ghp_')){e.textContent='Invalid token format';return}
+  if(await sha256(p)!==HASH){e.textContent='Incorrect password';return}
+  GTOKEN=t;sessionStorage.setItem('tm_tok',t);sessionStorage.setItem('tm_auth','1');
+  document.getElementById('loginPage').style.display='none';document.getElementById('adminLayout').classList.add('active');
+  await loadContent();showPage('dashboard');
 }
 
-let GITHUB_TOKEN = '';
+function doLogout(){sessionStorage.clear();GTOKEN='';document.getElementById('loginPage').style.display='flex';document.getElementById('adminLayout').classList.remove('active')}
 
-async function doLogin() {
-  const pass = document.getElementById('loginPass').value;
-  const token = document.getElementById('loginToken').value.trim();
-  const err = document.getElementById('loginError');
-
-  if (!pass || !token) { err.textContent = 'Please enter password and token'; return; }
-  if (!token.startsWith('github_pat_') && !token.startsWith('ghp_')) { err.textContent = 'Invalid GitHub token format'; return; }
-
-  const hash = await sha256(pass);
-  if (hash !== ADMIN_PASS_HASH) { err.textContent = 'Incorrect password'; return; }
-
-  GITHUB_TOKEN = token;
-  sessionStorage.setItem('topmoto_token', token);
-  sessionStorage.setItem('topmoto_auth', '1');
-
-  document.getElementById('loginPage').style.display = 'none';
-  document.getElementById('adminLayout').classList.add('active');
-  loadAllData();
+async function api(path,method='GET',body=null){
+  const opts={method,headers:{Authorization:`Bearer ${GTOKEN}`,Accept:'application/vnd.github.v3+json'}};
+  if(body){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(body)}
+  const r=await fetch(`${API}/${path}`,opts);return r.json()
 }
 
-function doLogout() {
-  sessionStorage.clear();
-  GITHUB_TOKEN = '';
-  document.getElementById('loginPage').style.display = 'flex';
-  document.getElementById('adminLayout').classList.remove('active');
-}
+async function getSha(path){try{const r=await api(path);return r.sha||''}catch(e){return''}}
 
-// Auto-login if session exists
-if (sessionStorage.getItem('topmoto_auth') === '1') {
-  GITHUB_TOKEN = sessionStorage.getItem('topmoto_token') || '';
-  document.getElementById('loginPage').style.display = 'none';
-  document.getElementById('adminLayout').classList.add('active');
-  setTimeout(loadAllData, 100);
-}
+function b64(s){return btoa(unescape(encodeURIComponent(s)))}
 
-// ==========================================
-// NAVIGATION
-// ==========================================
-function showPage(name, el) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sidebar a[data-page]').forEach(a => a.classList.remove('active'));
+function toast(m,err){const t=document.getElementById('toast');t.textContent=m;t.className='toast'+(err?' error':'')+' show';setTimeout(()=>t.classList.remove('show'),3000)}
+
+function showPage(name,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sidebar a[data-page]').forEach(a=>a.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
-  if (el) el.classList.add('active');
-  if (name === 'media') loadMedia();
-  if (name === 'content') { loadContentData(); switchEditorTab('hero'); }
-  if (name === 'sections') loadSections();
-  if (name === 'settings') loadSettings();
+  if(el)el.classList.add('active');
+  if(name==='media')loadMedia();
+  if(name==='sections')renderSections();
+  if(name==='dashboard')renderDashboard();
+  if(['topbar','nav','hero','quick','picks','exp','news_page','nl','footer_page','settings'].includes(name))renderEditor(name);
 }
 
-// ==========================================
-// TOAST
-// ==========================================
-function toast(msg, isError) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = 'toast' + (isError?' error':'') + ' show';
-  setTimeout(() => t.classList.remove('show'), 3000);
+async function loadContent(){
+  try{const r=await api('data/content.json');if(r.content)contentData=JSON.parse(atob(r.content))}
+  catch(e){const r=await fetch('data/content.json');contentData=await r.json()}
 }
 
-// ==========================================
-// API HELPERS
-// ==========================================
-async function apiGet(path) {
-  const r = await fetch(`${API_BASE}/${path}`, {
-    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
-  });
-  return r.json();
+function renderDashboard(){
+  if(!contentData){document.getElementById('dashInfo').textContent='Failed to load';return}
+  const h=contentData.heroSlides||[],tp=contentData.topPicks?.picks||[],n=contentData.news?.articles||[],imgs=(contentData.quickAccess?.cards||[]).length+(contentData.experience?.cards||[]).length;
+  document.getElementById('dashInfo').innerHTML=`
+    Slides: ${h.length} | Top Picks: ${tp.length} | News: ${n.length} | Sections: ${Object.keys(contentData).length}<br>
+    <small>Edit each section below. Changes go live instantly after save.</small>`;
 }
 
-async function apiPut(path, contentBase64, message) {
-  // Get current SHA if exists
-  let sha = '';
-  try {
-    const existing = await apiGet(path);
-    if (existing && existing.sha) sha = existing.sha;
-  } catch(e) {}
+// ===== SECTION EDITORS =====
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
-  const body = { message, content: contentBase64 };
-  if (sha) body.sha = sha;
-
-  const r = await fetch(`${API_BASE}/${path}`, {
-    method: 'PUT',
-    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' },
-    body: JSON.stringify(body)
-  });
-  return r.json();
-}
-
-async function apiDelete(path, message) {
-  const existing = await apiGet(path);
-  if (!existing || !existing.sha) throw new Error('File not found');
-  const r = await fetch(`${API_BASE}/${path}`, {
-    method: 'DELETE',
-    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message, sha: existing.sha })
-  });
-  return r.json();
-}
-
-function toBase64(str) { return btoa(unescape(encodeURIComponent(str))); }
-
-// ==========================================
-// DASHBOARD
-// ==========================================
-async function loadAllData() {
-  try {
-    const images = await apiGet('images');
-    if (Array.isArray(images)) document.getElementById('statImages').textContent = images.length;
-
-    const content = await apiGet('data/content.json');
-    if (content && content.content) {
-      const d = JSON.parse(atob(content.content));
-      document.getElementById('statSlides').textContent = (d.heroSlides||[]).length;
-      document.getElementById('statPicks').textContent = (d.topPicks||[]).length;
-      document.getElementById('statNews').textContent = (d.news||[]).length;
-    }
-  } catch(e) { console.error(e); }
-}
-
-// ==========================================
-// MEDIA LIBRARY
-// ==========================================
-async function loadMedia() {
-  const grid = document.getElementById('mediaGrid');
-  grid.innerHTML = 'Loading...';
-  try {
-    const files = await apiGet('images');
-    if (!Array.isArray(files)) { grid.innerHTML = 'No images found'; return; }
-    grid.innerHTML = files.map(f => `
-      <div class="media-item">
-        <img src="${f.download_url}" alt="${f.name}" loading="lazy">
-        <div class="name" title="${f.name}">${f.name}</div>
-        <div class="del" title="Delete" onclick="event.stopPropagation();deleteImage('${f.name}')">×</div>
-      </div>
-    `).join('');
-  } catch(e) { grid.innerHTML = 'Error loading media'; }
-}
-
-async function handleFileUpload(files) {
-  if (!files || !files.length) return;
-  for (const file of files) {
-    if (!file.type.startsWith('image/')) continue;
-    const reader = new FileReader();
-    await new Promise(resolve => {
-      reader.onload = async () => {
-        const base64 = reader.result.split(',')[1];
-        try {
-          await apiPut(`images/${file.name}`, base64, `Upload ${file.name}`);
-          toast(`Uploaded: ${file.name}`);
-        } catch(e) {
-          toast(`Failed: ${file.name}`, true);
-        }
-        resolve();
-      };
-      reader.readAsDataURL(file);
+function renderEditor(name){
+  if(!contentData)return;
+  const d=contentData;
+  if(name==='topbar'){
+    document.getElementById('editorTopBar').innerHTML=`<div class="form-row"><div><label>Motorcycles Text</label><input value="${esc(d.topBar?.motorcycleText||'')}" onchange="contentData.topBar.motorcycleText=this.value"></div></div>`;
+  }
+  if(name==='nav'){
+    let html='';
+    (d.navigation?.menuItems||[]).forEach((m,i)=>{
+      html+=`<div class="editor-item"><h4>Menu Item ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="delNavItem(${i})">×</button></h4>
+        <div class="form-row"><div><label>Text</label><input value="${esc(m.text)}" onchange="contentData.navigation.menuItems[${i}].text=this.value"></div>
+        <div><label>Link</label><input value="${esc(m.link)}" onchange="contentData.navigation.menuItems[${i}].link=this.value"></div></div>
+      </div>`;
     });
+    html+=`<button class="btn-secondary btn-sm" onclick="addNavItem()">+ Add Menu Item</button>`;
+    document.getElementById('editorNav').innerHTML=html;
+  }
+  if(name==='hero'){
+    let html='';
+    (d.heroSlides||[]).forEach((s,i)=>{
+      html+=`<div class="editor-item"><h4>Slide ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="delHeroSlide(${i})">×</button></h4>
+        <div class="form-row"><div><label>Label</label><input value="${esc(s.label)}" onchange="contentData.heroSlides[${i}].label=this.value"></div><div><label>Tag</label><input value="${esc(s.tag)}" onchange="contentData.heroSlides[${i}].tag=this.value"></div></div>
+        <div class="form-row"><div><label>Title</label><input value="${esc(s.title)}" onchange="contentData.heroSlides[${i}].title=this.value"></div><div><label>CTA Text</label><input value="${esc(s.ctaText)}" onchange="contentData.heroSlides[${i}].ctaText=this.value"></div></div>
+        <label>Description</label><textarea rows="2" onchange="contentData.heroSlides[${i}].desc=this.value">${esc(s.desc)}</textarea>
+        <label>Image</label><input value="${esc(s.image)}" onchange="contentData.heroSlides[${i}].image=this.value">
+        <label>CTA Link</label><input value="${esc(s.ctaLink)}" onchange="contentData.heroSlides[${i}].ctaLink=this.value">
+      </div>`;
+    });
+    document.getElementById('editorHero').innerHTML=html;
+  }
+  if(name==='quick'){
+    let html='';
+    (d.quickAccess?.cards||[]).forEach((c,i)=>{
+      html+=`<div class="editor-item"><h4>Card ${i+1}</h4>
+        <div class="form-row"><div><label>Title</label><input value="${esc(c.title)}" onchange="contentData.quickAccess.cards[${i}].title=this.value"></div><div><label>Link</label><input value="${esc(c.link)}" onchange="contentData.quickAccess.cards[${i}].link=this.value"></div></div>
+      </div>`;
+    });
+    document.getElementById('editorQuick').innerHTML=html;
+  }
+  if(name==='picks'){
+    let html='';
+    if(!d.topPicks){d.topPicks={heading:'Top picks',picks:[],fullRangeTagline:'Put the fun back into riding',fullRangeTitle:'Full model range',fullRangeLink:'#'}}
+    html+=`<div class="form-row"><div><label>Heading</label><input value="${esc(d.topPicks.heading||'')}" onchange="contentData.topPicks.heading=this.value"></div><div><label>Full Range Tagline</label><input value="${esc(d.topPicks.fullRangeTagline||'')}" onchange="contentData.topPicks.fullRangeTagline=this.value"></div></div>
+      <div class="form-row"><div><label>Full Range Title</label><input value="${esc(d.topPicks.fullRangeTitle||'')}" onchange="contentData.topPicks.fullRangeTitle=this.value"></div><div><label>Full Range Link</label><input value="${esc(d.topPicks.fullRangeLink||'')}" onchange="contentData.topPicks.fullRangeLink=this.value"></div></div><hr style="border-color:var(--border);margin:0.75rem 0">`;
+    (d.topPicks.picks||[]).forEach((p,i)=>{
+      html+=`<div class="editor-item"><h4>Pick ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="delPick(${i})">×</button></h4>
+        <div class="form-row"><div><label>Model</label><input value="${esc(p.model)}" onchange="contentData.topPicks.picks[${i}].model=this.value"></div><div><label>Tagline</label><input value="${esc(p.tagline)}" onchange="contentData.topPicks.picks[${i}].tagline=this.value"></div></div>
+        <div class="form-row"><div><label>Image</label><input value="${esc(p.image)}" onchange="contentData.topPicks.picks[${i}].image=this.value"></div><div><label>Link</label><input value="${esc(p.link)}" onchange="contentData.topPicks.picks[${i}].link=this.value"></div></div>
+      </div>`;
+    });
+    document.getElementById('editorPicks').innerHTML=html;
+  }
+  if(name==='exp'){
+    let html='';
+    html+=`<div class="form-row"><div><label>Heading</label><input value="${esc(d.experience?.heading||'')}" onchange="contentData.experience.heading=this.value"></div></div><hr style="border-color:var(--border);margin:0.75rem 0">`;
+    (d.experience?.cards||[]).forEach((c,i)=>{
+      html+=`<div class="editor-item"><h4>Card ${i+1}</h4>
+        <div class="form-row"><div><label>Title</label><input value="${esc(c.title)}" onchange="contentData.experience.cards[${i}].title=this.value"></div><div><label>Link</label><input value="${esc(c.link)}" onchange="contentData.experience.cards[${i}].link=this.value"></div></div>
+      </div>`;
+    });
+    document.getElementById('editorExp').innerHTML=html;
+  }
+  if(name==='news_page'){
+    let html='';
+    if(!d.news)contentData.news={heading:'MORE ON TOPMOTO',articles:[]};
+    html+=`<div class="form-row"><div><label>Heading</label><input value="${esc(d.news.heading||'')}" onchange="contentData.news.heading=this.value"></div></div><hr style="border-color:var(--border);margin:0.75rem 0">`;
+    (d.news.articles||[]).forEach((n,i)=>{
+      html+=`<div class="editor-item"><h4>Article ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="delNewsItem(${i})">×</button></h4>
+        <div class="form-row"><div><label>Date</label><input value="${esc(n.date)}" onchange="contentData.news.articles[${i}].date=this.value"></div><div><label>Title</label><input value="${esc(n.title)}" onchange="contentData.news.articles[${i}].title=this.value"></div></div>
+        <label>Excerpt</label><textarea rows="2" onchange="contentData.news.articles[${i}].excerpt=this.value">${esc(n.excerpt)}</textarea>
+        <div class="form-row"><div><label>Image</label><input value="${esc(n.image)}" onchange="contentData.news.articles[${i}].image=this.value"></div><div><label>Link</label><input value="${esc(n.link)}" onchange="contentData.news.articles[${i}].link=this.value"></div></div>
+      </div>`;
+    });
+    document.getElementById('editorNews').innerHTML=html;
+  }
+  if(name==='nl'){
+    const nl=d.newsletter||{};
+    document.getElementById('editorNl').innerHTML=`
+      <div class="form-row"><div><label>Brand Text</label><input value="${esc(nl.brand||'')}" onchange="contentData.newsletter.brand=this.value"></div><div><label>Tagline</label><input value="${esc(nl.tagline||'')}" onchange="contentData.newsletter.tagline=this.value"></div></div>
+      <label>Description</label><textarea rows="2" onchange="contentData.newsletter.desc=this.value">${esc(nl.desc||'')}</textarea>
+      <div class="form-row"><div><label>Placeholder</label><input value="${esc(nl.placeholder||'')}" onchange="contentData.newsletter.placeholder=this.value"></div><div><label>Button Text</label><input value="${esc(nl.btnText||'')}" onchange="contentData.newsletter.btnText=this.value"></div></div>`;
+  }
+  if(name==='footer_page'){
+    let html='';
+    html+=`<div class="form-row"><div><label>Copyright</label><input value="${esc(d.footer?.copyright||'')}" onchange="contentData.footer.copyright=this.value"></div></div><hr style="border-color:var(--border);margin:0.75rem 0">`;
+    (d.footer?.columns||[]).forEach((col,ci)=>{
+      html+=`<div class="editor-item"><h4>${esc(col.title)}</h4><label>Links (one per line)</label><textarea rows="4" onchange="contentData.footer.columns[${ci}].links=this.value.split('\\n')">${(col.links||[]).join('\n')}</textarea></div>`;
+    });
+    document.getElementById('editorFooter').innerHTML=html;
+  }
+  if(name==='settings'){
+    const s=d.siteSettings||{};
+    document.getElementById('setTitle').value=s.title||'';
+    document.getElementById('setGA').value=s.ga_id||'';
+    document.getElementById('setBlue').value=s.brandBlue||'#0084ce';
+    document.getElementById('setPass').value='';
+  }
+}
+
+function addHeroSlide(){if(!contentData.heroSlides)contentData.heroSlides=[];contentData.heroSlides.push({label:'New',tag:'new',title:'Title',desc:'Description',ctaText:'Discover',ctaLink:'#',image:'images/450cc-4t.jpg'});renderEditor('hero')}
+function delHeroSlide(i){contentData.heroSlides.splice(i,1);renderEditor('hero')}
+function addPick(){if(!contentData.topPicks.picks)contentData.topPicks.picks=[];contentData.topPicks.picks.push({model:'New',tagline:'Tagline',image:'images/450cc-4t.jpg',link:'#'});renderEditor('picks')}
+function delPick(i){contentData.topPicks.picks.splice(i,1);renderEditor('picks')}
+function addNewsItem(){if(!contentData.news.articles)contentData.news.articles=[];contentData.news.articles.push({date:'Jan 01, 2026',title:'New',excerpt:'Excerpt...',image:'images/450cc-4t.jpg',link:'#'});renderEditor('news_page')}
+function delNewsItem(i){contentData.news.articles.splice(i,1);renderEditor('news_page')}
+function addNavItem(){if(!contentData.navigation.menuItems)contentData.navigation.menuItems=[];contentData.navigation.menuItems.push({text:'New',link:'#',hasDropdown:false});renderEditor('nav')}
+function delNavItem(i){contentData.navigation.menuItems.splice(i,1);renderEditor('nav')}
+
+// ===== SAVE SECTION =====
+async function saveSection(type){
+  if(!contentData){toast('No data loaded',true);return}
+  try{
+    const sha=await getSha('data/content.json');
+    const body={message:`Update ${type} via admin`,content:b64(JSON.stringify(contentData,null,2))};
+    if(sha)body.sha=sha;
+    await api('data/content.json','PUT',body);
+    toast('Saved & published!')
+  }catch(e){toast('Save failed',true)}
+}
+
+// ===== SECTIONS TOGGLE =====
+function renderSections(){
+  const labels={top_bar:'1. Top Bar',navigation:'2. Navigation',quick_access:'4. Quick Access',top_picks:'5. Top Picks',experience:'6. Experience',news_section:'7. News',newsletter:'8. Newsletter',footer:'9. Footer'};
+  const secs=contentData.sections||{};
+  document.getElementById('sectionToggles').innerHTML=Object.entries(labels).map(([k,lab])=>`<div class="section-toggle"><span>${lab}</span><label class="toggle-switch"><input type="checkbox" ${secs[k]!==false?'checked':''} onchange="contentData.sections['${k}']=this.checked"><span class="slider"></span></label></div>`).join('');
+}
+async function saveSections(){
+  try{
+    const sha=await getSha('data/content.json');
+    const body={message:'Update sections visibility',content:b64(JSON.stringify(contentData,null,2))};
+    if(sha)body.sha=sha;
+    await api('data/content.json','PUT',body);
+    toast('Visibility updated!')
+  }catch(e){toast('Save failed',true)}
+}
+
+async function saveSettings(){
+  if(!contentData.siteSettings)contentData.siteSettings={};
+  contentData.siteSettings.title=document.getElementById('setTitle').value;
+  contentData.siteSettings.ga_id=document.getElementById('setGA').value;
+  contentData.siteSettings.brandBlue=document.getElementById('setBlue').value;
+  await saveSection('settings');
+}
+
+// ===== MEDIA =====
+async function loadMedia(){
+  const g=document.getElementById('mediaGrid');g.innerHTML='Loading...';
+  try{const f=await api('images');if(!Array.isArray(f)){g.innerHTML='No images';return}
+    g.innerHTML=f.map(f=>`<div class="media-item"><img src="${f.download_url}" loading="lazy"><div class="del" onclick="event.stopPropagation();delMedia('${f.name}')">×</div></div>`).join('');
+  }catch(e){g.innerHTML='Error loading'}
+}
+async function handleUpload(files){
+  if(!files||!files.length)return;
+  for(const f of files){if(!f.type.startsWith('image/'))continue;
+    const r=new FileReader();await new Promise(res=>{r.onload=async()=>{
+      const b=r.result.split(',')[1];
+      try{await api(`images/${f.name}`,'PUT',{message:`Upload ${f.name}`,content:b});toast(`Uploaded: ${f.name}`)}catch(e){toast(`Failed: ${f.name}`,true)}
+      res();};r.readAsDataURL(f);});
   }
   loadMedia();
 }
-
-async function deleteImage(name) {
-  if (!confirm(`Delete ${name}? This cannot be undone.`)) return;
-  try {
-    await apiDelete(`images/${name}`, `Delete ${name}`);
-    toast(`Deleted: ${name}`);
-    loadMedia();
-  } catch(e) {
-    toast('Delete failed', true);
-  }
+async function delMedia(name){if(!confirm(`Delete ${name}?`))return;
+  try{const sha=await getSha(`images/${name}`);await api(`images/${name}`,'DELETE',{message:`Delete ${name}`,sha});toast(`Deleted: ${name}`);loadMedia()}catch(e){toast('Delete failed',true)}
 }
 
 // Drag & drop
-document.addEventListener('DOMContentLoaded', () => {
-  const zone = document.getElementById('uploadZone');
-  if (!zone) return;
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.style.borderColor='var(--blue)'; });
-  zone.addEventListener('dragleave', () => { zone.style.borderColor=''; });
-  zone.addEventListener('drop', e => {
-    e.preventDefault(); zone.style.borderColor='';
-    handleFileUpload(e.dataTransfer.files);
-  });
+document.addEventListener('DOMContentLoaded',()=>{
+  const z=document.querySelector('.upload-zone');
+  if(z){z.addEventListener('dragover',e=>{e.preventDefault();z.style.borderColor='var(--blue)'});z.addEventListener('dragleave',()=>{z.style.borderColor=''});z.addEventListener('drop',e=>{e.preventDefault();z.style.borderColor='';handleUpload(e.dataTransfer.files)})}
 });
 
-// ==========================================
-// CONTENT EDITOR
-// ==========================================
-let currentContent = null;
-let currentEditorTab = 'hero';
-
-async function loadContentData() {
-  try {
-    const resp = await apiGet('data/content.json');
-    if (resp && resp.content) {
-      currentContent = JSON.parse(atob(resp.content));
-    }
-  } catch(e) {
-    // Use default
-    try {
-      const r = await fetch('data/content.json');
-      currentContent = await r.json();
-    } catch(e2) { toast('Failed to load content data', true); }
-  }
-  renderEditor();
-}
-
-function switchEditorTab(tab, el) {
-  currentEditorTab = tab;
-  if (el) { document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active')); el.classList.add('active'); }
-  document.getElementById('editorHero').style.display = tab==='hero'?'':'none';
-  document.getElementById('editorPicks').style.display = tab==='picks'?'':'none';
-  document.getElementById('editorNews').style.display = tab==='news_tab'?'':'none';
-  if (currentContent) renderEditor();
-}
-
-function renderEditor() {
-  if (!currentContent) return;
-  const d = currentContent;
-
-  // Hero
-  const heroSlides = d.heroSlides || [];
-  let heroHTML = heroSlides.map((s,i) => `
-    <div class="editor-item">
-      <h4>Slide ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="deleteSlide(${i})">Remove</button></h4>
-      <div class="form-row"><div><label>Label</label><input value="${esc(s.label)}" onchange="updateSlide(${i},'label',this.value)"></div><div><label>Tag</label><input value="${esc(s.tag)}" onchange="updateSlide(${i},'tag',this.value)"></div></div>
-      <div class="form-row"><div><label>Title</label><input value="${esc(s.title)}" onchange="updateSlide(${i},'title',this.value)"></div><div><label>CTA Text</label><input value="${esc(s.ctaText)}" onchange="updateSlide(${i},'ctaText',this.value)"></div></div>
-      <label>Description</label><textarea rows="2" onchange="updateSlide(${i},'desc',this.value)">${esc(s.desc)}</textarea>
-      <label style="margin-top:0.5rem">Image</label><input value="${esc(s.image)}" onchange="updateSlide(${i},'image',this.value)">
-    </div>
-  `).join('');
-  heroHTML += `<button class="btn-secondary" onclick="addSlide()">+ Add Slide</button>`;
-  document.getElementById('editorHero').innerHTML = heroHTML;
-
-  // Top Picks
-  const picks = d.topPicks || [];
-  let picksHTML = picks.map((p,i) => `
-    <div class="editor-item">
-      <h4>Pick ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="deletePick(${i})">Remove</button></h4>
-      <div class="form-row"><div><label>Model</label><input value="${esc(p.model)}" onchange="updatePick(${i},'model',this.value)"></div><div><label>Tagline</label><input value="${esc(p.tagline)}" onchange="updatePick(${i},'tagline',this.value)"></div></div>
-      <label>Image</label><input value="${esc(p.image)}" onchange="updatePick(${i},'image',this.value)">
-    </div>
-  `).join('');
-  picksHTML += `<button class="btn-secondary" onclick="addPick()">+ Add Pick</button>`;
-  document.getElementById('editorPicks').innerHTML = picksHTML;
-
-  // News
-  const news = d.news || [];
-  let newsHTML = news.map((n,i) => `
-    <div class="editor-item">
-      <h4>Article ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="deleteNews(${i})">Remove</button></h4>
-      <div class="form-row"><div><label>Date</label><input value="${esc(n.date)}" onchange="updateNews(${i},'date',this.value)"></div><div><label>Title</label><input value="${esc(n.title)}" onchange="updateNews(${i},'title',this.value)"></div></div>
-      <label>Excerpt</label><textarea rows="2" onchange="updateNews(${i},'excerpt',this.value)">${esc(n.excerpt)}</textarea>
-      <label style="margin-top:0.5rem">Image</label><input value="${esc(n.image)}" onchange="updateNews(${i},'image',this.value)">
-    </div>
-  `).join('');
-  newsHTML += `<button class="btn-secondary" onclick="addNews()">+ Add Article</button>`;
-  document.getElementById('editorNews').innerHTML = newsHTML;
-}
-
-function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function updateSlide(i, key, val) { currentContent.heroSlides[i][key] = val; }
-function addSlide() { currentContent.heroSlides.push({label:'New',tag:'new',title:'Title','desc':'Description',ctaText:'Discover',ctaLink:'#',image:'images/450cc-4t.jpg'}); renderEditor(); }
-function deleteSlide(i) { currentContent.heroSlides.splice(i,1); renderEditor(); }
-
-function updatePick(i, key, val) { currentContent.topPicks[i][key] = val; }
-function addPick() { currentContent.topPicks.push({model:'New Model',tagline:'Tagline',image:'images/450cc-4t.jpg',link:'#'}); renderEditor(); }
-function deletePick(i) { currentContent.topPicks.splice(i,1); renderEditor(); }
-
-function updateNews(i, key, val) { currentContent.news[i][key] = val; }
-function addNews() { currentContent.news.push({date:'Jan 01, 2026',title:'New Article',excerpt:'Excerpt...',image:'images/450cc-4t.jpg',link:'#'}); renderEditor(); }
-function deleteNews(i) { currentContent.news.splice(i,1); renderEditor(); }
-
-async function saveContent() {
-  if (!currentContent) return;
-  const json = JSON.stringify(currentContent, null, 2);
-  try {
-    await apiPut('data/content.json', toBase64(json), 'Update content via admin panel');
-    toast('Content saved & published! ✅');
-  } catch(e) {
-    toast('Save failed: ' + e.message, true);
-  }
-}
-
-// ==========================================
-// SECTIONS MANAGER
-// ==========================================
-async function loadSections() {
-  if (!currentContent) await loadContentData();
-  const secs = currentContent.sections || {};
-  const labels = {
-    quick_access: 'Quick Access Cards (Dealer Search, Promotions...)',
-    top_picks: 'Top Picks Section',
-    experience: 'Experience TOPMOTO',
-    news_section: 'News Section (MORE ON TOPMOTO)',
-    newsletter: 'Newsletter Subscription'
-  };
-  document.getElementById('sectionToggles').innerHTML = Object.keys(labels).map(k => `
-    <div class="section-toggle">
-      <span class="name">${labels[k]}</span>
-      <label class="toggle-switch">
-        <input type="checkbox" ${secs[k] !== false ? 'checked' : ''} onchange="currentContent.sections['${k}']=this.checked">
-        <span class="slider"></span>
-      </label>
-    </div>
-  `).join('');
-}
-
-async function saveSections() {
-  if (!currentContent) return;
-  try {
-    await apiPut('data/content.json', toBase64(JSON.stringify(currentContent,null,2)), 'Update sections via admin');
-    toast('Sections saved & published! ✅');
-  } catch(e) { toast('Save failed', true); }
-}
-
-// ==========================================
-// SETTINGS
-// ==========================================
-async function loadSettings() {
-  if (!currentContent) await loadContentData();
-  const s = currentContent.siteSettings || {};
-  document.getElementById('setTitle').value = s.title || 'TOPMOTO Motorcycles | United States';
-  document.getElementById('setGA').value = s.ga_id || '';
-  document.getElementById('setBlue').value = s.brandBlue || '#0084ce';
-}
-
-async function saveSettings() {
-  if (!currentContent) return;
-  currentContent.siteSettings = currentContent.siteSettings || {};
-  currentContent.siteSettings.title = document.getElementById('setTitle').value;
-  currentContent.siteSettings.ga_id = document.getElementById('setGA').value;
-  currentContent.siteSettings.brandBlue = document.getElementById('setBlue').value;
-
-  const newPass = document.getElementById('setPass').value;
-  if (newPass) {
-    // Can't change hash in this file, but can update password hash in content data
-    // For now just save settings
-  }
-  try {
-    await apiPut('data/content.json', toBase64(JSON.stringify(currentContent,null,2)), 'Update settings via admin');
-    toast('Settings saved! ✅');
-  } catch(e) { toast('Save failed', true); }
-}
-
-// ==========================================
-// INIT
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-  if (sessionStorage.getItem('topmoto_auth') === '1') {
-    // Already logged in, data loaded via setTimeout above
-  }
-});
+// Auto login
+if(sessionStorage.getItem('tm_auth')==='1'){GTOKEN=sessionStorage.getItem('tm_tok')||'';document.getElementById('loginPage').style.display='none';document.getElementById('adminLayout').classList.add('active');setTimeout(async()=>{await loadContent();showPage('dashboard')},100)}
 </script>
 </body>
 </html>
