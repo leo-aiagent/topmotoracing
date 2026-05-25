@@ -167,7 +167,7 @@ function renderEditor(name){
   if(!contentData)return;
   const d=contentData;
   if(name==='topbar'){
-    document.getElementById('editorTopBar').innerHTML=`<div class="form-row"><div><label>Motorcycles Text</label><input value="${esc(d.topBar?.motorcycleText||'')}" onchange="contentData.topBar.motorcycleText=this.value"></div></div>`;
+    document.getElementById('editorTopBar').innerHTML=`<div class="form-row"><div><label>Text</label><input value="${esc(d.topBar?.motorcycleText||'')}" onchange="contentData.topBar.motorcycleText=this.value"></div><div><label>Link</label><input value="${esc(d.topBar?.motorcycleLink||'')}" onchange="contentData.topBar.motorcycleLink=this.value"></div></div>`;
   }
   if(name==='nav'){
     let html='';
