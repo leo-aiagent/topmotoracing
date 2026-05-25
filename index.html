@@ -1164,85 +1164,8 @@ ul { list-style: none; }
      3. HERO CAROUSEL
      ========================================== -->
 <section class="hero" id="hero">
-  <!-- Slide 1 -->
-  <div class="hero__slide active" data-index="0">
-    <div class="hero__slide-bg">
-      <img src="images/450cc-4t.jpg" alt="TOPMOTO 450CC 4T">
-    </div>
-    <div class="hero__slide-content">
-      <span class="hero__slide-label">2026 COLLECTION</span>
-      <p class="hero__slide-tag">motocross</p>
-      <h1 class="hero__slide-title">Push the limits of performance</h1>
-      <p class="hero__slide-desc">Engineered for those who dare to defy limits. Precision-crafted machines built for the dirt.</p>
-      <a href="#top-picks" class="hero__slide-cta">Discover</a>
-    </div>
-  </div>
-
-  <!-- Slide 2 -->
-  <div class="hero__slide" data-index="1">
-    <div class="hero__slide-bg">
-      <img src="images/250-2t.jpg" alt="TOPMOTO 250 2T">
-    </div>
-    <div class="hero__slide-content">
-      <span class="hero__slide-label">New Arrival</span>
-      <p class="hero__slide-tag">2-stroke</p>
-      <h1 class="hero__slide-title">Make it sing!</h1>
-      <p class="hero__slide-desc">The unmistakable sound of a 2-stroke. Lightweight, explosive power that puts a smile on every ride.</p>
-      <a href="#top-picks" class="hero__slide-cta">Discover</a>
-    </div>
-  </div>
-
-  <!-- Slide 3 -->
-  <div class="hero__slide" data-index="2">
-    <div class="hero__slide-bg">
-      <img src="images/450cc-4t-onroad.jpg" alt="TOPMOTO 450CC 4T ONROAD">
-    </div>
-    <div class="hero__slide-content">
-      <span class="hero__slide-label">Dual-Sport</span>
-      <p class="hero__slide-tag">on-road certified</p>
-      <h1 class="hero__slide-title">From street to trail</h1>
-      <p class="hero__slide-desc">Street-legal machines that bring the dirt to your doorstep. Ride anywhere, no trailer needed.</p>
-      <a href="#top-picks" class="hero__slide-cta">Discover</a>
-    </div>
-  </div>
-
-  <!-- Slide 4 -->
-  <div class="hero__slide" data-index="3">
-    <div class="hero__slide-bg">
-      <img src="images/300cc-4t.jpg" alt="TOPMOTO 300CC 4T">
-    </div>
-    <div class="hero__slide-content">
-      <span class="hero__slide-label">Enduro Ready</span>
-      <p class="hero__slide-tag">4-stroke</p>
-      <h1 class="hero__slide-title">Making hard enduro easy</h1>
-      <p class="hero__slide-desc">Balanced power delivery meets relentless torque. Conquer the toughest terrain with confidence.</p>
-      <a href="#top-picks" class="hero__slide-cta">Discover</a>
-    </div>
-  </div>
-
-  <!-- Slide 5 -->
-  <div class="hero__slide" data-index="4">
-    <div class="hero__slide-bg">
-      <img src="images/150cc-4t.jpg" alt="TOPMOTO 150CC 4T">
-    </div>
-    <div class="hero__slide-content">
-      <span class="hero__slide-label">Entry Level</span>
-      <p class="hero__slide-tag">motocross</p>
-      <h1 class="hero__slide-title">Start your journey</h1>
-      <p class="hero__slide-desc">The perfect entry into off-road riding. Agile, forgiving, and built to grow with your skills.</p>
-      <a href="#top-picks" class="hero__slide-cta">All models</a>
-    </div>
-  </div>
-
-  <!-- Dots -->
-  <div class="hero__dots" id="heroDots">
-    <button class="hero__dot active" data-index="0"></button>
-    <button class="hero__dot" data-index="1"></button>
-    <button class="hero__dot" data-index="2"></button>
-    <button class="hero__dot" data-index="3"></button>
-    <button class="hero__dot" data-index="4"></button>
-  </div>
-
+  <div id="heroSlidesContainer"></div>
+  <div class="hero__dots" id="heroDots"></div>
   <div class="hero__scroll">
     <span>Scroll down</span>
     <div class="hero__scroll-line"></div>
@@ -1252,7 +1175,7 @@ ul { list-style: none; }
 <!-- ==========================================
      4. QUICK ACCESS CARDS
      ========================================== -->
-<section class="quick-access">
+<section class="quick-access" data-section="quick_access" style="display:none">
   <div class="quick-access__grid">
     <a href="#" class="quick-card">
       <div class="quick-card__icon">
@@ -1287,38 +1210,9 @@ ul { list-style: none; }
 <!-- ==========================================
      5. TOP PICKS
      ========================================== -->
-<section class="top-picks" id="top-picks">
+<section class="top-picks" id="top-picks" data-section="top_picks" style="display:none">
   <h2 class="top-picks__heading container reveal">Top picks</h2>
-
-  <div class="top-picks__grid">
-    <a href="#" class="pick-card reveal">
-      <div class="pick-card__image">
-        <img src="images/450cc-4t.jpg" alt="450CC 4T 2026">
-      </div>
-      <h3 class="pick-card__model">450CC 4T 2026</h3>
-      <p class="pick-card__tagline">Make it sing!</p>
-      <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>
-    </a>
-
-    <a href="#" class="pick-card reveal">
-      <div class="pick-card__image">
-        <img src="images/250-2t.jpg" alt="250 2T 2026">
-      </div>
-      <h3 class="pick-card__model">250 2T 2026</h3>
-      <p class="pick-card__tagline">Power on tap!</p>
-      <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>
-    </a>
-
-    <a href="#" class="pick-card reveal">
-      <div class="pick-card__image">
-        <img src="images/300cc-4t.jpg" alt="300CC 4T 2026">
-      </div>
-      <h3 class="pick-card__model">300CC 4T 2026</h3>
-      <p class="pick-card__tagline">Making hard enduro easy</p>
-      <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>
-    </a>
-  </div>
-
+  <div class="top-picks__grid" id="topPicksGrid"></div>
   <div class="model-range reveal">
     <p class="model-range__tagline">Put the fun back into riding</p>
     <p class="model-range__title">Full model range</p>
@@ -1329,7 +1223,7 @@ ul { list-style: none; }
 <!-- ==========================================
      6. EXPERIENCE TOPMOTO
      ========================================== -->
-<section class="experience" id="experience">
+<section class="experience" id="experience" data-section="experience" style="display:none">
   <h2 class="experience__heading container reveal">Experience TOPMOTO</h2>
 
   <div class="experience__grid">
@@ -1366,48 +1260,16 @@ ul { list-style: none; }
 <!-- ==========================================
      7. MORE ON TOPMOTO (News)
      ========================================== -->
-<section class="news">
+<section class="news" data-section="news_section" style="display:none">
   <h2 class="news__heading container reveal">MORE ON TOPMOTO</h2>
-
-  <div class="news__grid">
-    <div class="news-card reveal">
-      <div class="news-card__image">
-        <img src="images/450cc-4t-onroad.jpg" alt="Rental & Service">
-      </div>
-      <p class="news-card__date">May 15, 2026</p>
-      <h3 class="news-card__title">TOPMOTO ISDE Bike Rental</h3>
-      <p class="news-card__excerpt">Planning on competing in the world's longest running FIM enduro event? Want to rent one of our awesome enduro bikes? Yes? Then read on&hellip;</p>
-      <a href="#" class="news-card__link">View Profile &#8594;</a>
-    </div>
-
-    <div class="news-card reveal">
-      <div class="news-card__image">
-        <img src="images/150cc-4t.jpg" alt="First Time Buyer">
-      </div>
-      <p class="news-card__date">Apr 30, 2026</p>
-      <h3 class="news-card__title">Hop on the Fun Train</h3>
-      <p class="news-card__excerpt">SPECIAL OFFERS AVAILABLE FOR FIRST TIME BUYERS* &mdash; Get into off-road riding with our exclusive first-time buyer program.</p>
-      <a href="#" class="news-card__link">View Profile &#8594;</a>
-    </div>
-
-    <div class="news-card reveal">
-      <div class="news-card__image">
-        <img src="images/300cc-4t-onroad.jpg" alt="Outdoor Card">
-      </div>
-      <p class="news-card__date">Apr 15, 2026</p>
-      <h3 class="news-card__title">Trick Out Your Kit</h3>
-      <p class="news-card__excerpt">Special Offers available on TOPMOTO Apparel, Technical Accessories &amp; Spare Parts. Gear up and ride in style.</p>
-      <a href="#" class="news-card__link">View Profile &#8594;</a>
-    </div>
-  </div>
-
+  <div class="news__grid" id="newsGrid"></div>
   <a href="#" class="news__all-link">All News &#8594;</a>
 </section>
 
 <!-- ==========================================
      8. NEWSLETTER
      ========================================== -->
-<section class="newsletter">
+<section class="newsletter" data-section="newsletter" style="display:none">
   <div class="container">
     <p class="newsletter__brand reveal">JOIN TOPMOTO</p>
     <p class="newsletter__tagline reveal">STAY CONNECTED / GET ON THE DIRT !!!</p>
@@ -1493,60 +1355,112 @@ ul { list-style: none; }
 
 <script>
 // ==========================================
-// HERO CAROUSEL
+// DATA-DRIVEN CONTENT RENDERING
 // ==========================================
-const slides = document.querySelectorAll('.hero__slide');
-const dots = document.querySelectorAll('.hero__dot');
-let currentSlide = 0;
-const totalSlides = slides.length;
-let autoPlayInterval;
+(async function() {
+  let data;
+  try {
+    const resp = await fetch('data/content.json');
+    data = await resp.json();
+  } catch(e) {
+    console.warn('Content data not loaded, using fallback');
+    return;
+  }
 
-function goToSlide(index) {
-  slides.forEach(s => s.classList.remove('active'));
-  dots.forEach(d => d.classList.remove('active'));
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
-  currentSlide = index;
-}
+  // --- Section visibility ---
+  if (data.sections) {
+    Object.entries(data.sections).forEach(([key, visible]) => {
+      const el = document.querySelector(`[data-section="${key}"]`);
+      if (el) el.style.display = visible ? '' : 'none';
+    });
+  }
 
-function nextSlide() {
-  goToSlide((currentSlide + 1) % totalSlides);
-}
+  // --- Render Hero Slides ---
+  if (data.heroSlides && data.heroSlides.length) {
+    const container = document.getElementById('heroSlidesContainer');
+    const dotsContainer = document.getElementById('heroDots');
+    data.heroSlides.forEach((s, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'hero__slide' + (i === 0 ? ' active' : '');
+      slide.dataset.index = i;
+      slide.innerHTML = `<div class="hero__slide-bg"><img src="${s.image}" alt="Slide ${i+1}"></div>
+        <div class="hero__slide-content">
+          <span class="hero__slide-label">${s.label}</span>
+          <p class="hero__slide-tag">${s.tag}</p>
+          <h1 class="hero__slide-title">${s.title}</h1>
+          <p class="hero__slide-desc">${s.desc}</p>
+          <a href="${s.ctaLink || '#top-picks'}" class="hero__slide-cta">${s.ctaText}</a>
+        </div>`;
+      container.appendChild(slide);
 
-dots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    goToSlide(parseInt(dot.dataset.index));
-    resetAutoPlay();
-  });
-});
+      const dot = document.createElement('button');
+      dot.className = 'hero__dot' + (i === 0 ? ' active' : '');
+      dot.dataset.index = i;
+      dotsContainer.appendChild(dot);
+    });
+  }
 
-function startAutoPlay() {
-  autoPlayInterval = setInterval(nextSlide, 5000);
-}
-
-function resetAutoPlay() {
-  clearInterval(autoPlayInterval);
+  // --- Carousel logic ---
+  const slides = document.querySelectorAll('.hero__slide');
+  const dots = document.querySelectorAll('.hero__dot');
+  let currentSlide = 0, autoPlayInterval;
+  function goToSlide(i) {
+    slides.forEach(s => s.classList.remove('active')); dots.forEach(d => d.classList.remove('active'));
+    if (slides[i]) { slides[i].classList.add('active'); dots[i].classList.add('active'); currentSlide = i; }
+  }
+  function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
+  dots.forEach(d => d.addEventListener('click', () => { goToSlide(+d.dataset.index); resetAutoPlay(); }));
+  function startAutoPlay() { autoPlayInterval = setInterval(nextSlide, 5000); }
+  function resetAutoPlay() { clearInterval(autoPlayInterval); startAutoPlay(); }
   startAutoPlay();
-}
 
-startAutoPlay();
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { goToSlide((currentSlide - 1 + slides.length) % slides.length); resetAutoPlay(); }
+    if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
+  });
 
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowLeft') { goToSlide((currentSlide - 1 + totalSlides) % totalSlides); resetAutoPlay(); }
-  if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
-});
+  let tx=0,ty=0;
+  const heroEl = document.getElementById('hero');
+  heroEl.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; });
+  heroEl.addEventListener('touchend', e => {
+    ty = e.changedTouches[0].screenX;
+    if (ty < tx - 60) { nextSlide(); resetAutoPlay(); }
+    if (ty > tx + 60) { goToSlide((currentSlide - 1 + slides.length) % slides.length); resetAutoPlay(); }
+  });
 
-// Touch swipe
-let touchStartX = 0;
-let touchEndX = 0;
-const heroEl = document.getElementById('hero');
-heroEl.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
-heroEl.addEventListener('touchend', (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  if (touchEndX < touchStartX - 60) { nextSlide(); resetAutoPlay(); }
-  if (touchEndX > touchStartX + 60) { goToSlide((currentSlide - 1 + totalSlides) % totalSlides); resetAutoPlay(); }
-});
+  // --- Render Top Picks ---
+  if (data.topPicks && data.topPicks.length) {
+    const grid = document.getElementById('topPicksGrid');
+    data.topPicks.forEach(p => {
+      const card = document.createElement('a');
+      card.href = p.link || '#';
+      card.className = 'pick-card reveal';
+      card.innerHTML = `<div class="pick-card__image"><img src="${p.image}" alt="${p.model}"></div>
+        <h3 class="pick-card__model">${p.model}</h3>
+        <p class="pick-card__tagline">${p.tagline}</p>
+        <span class="pick-card__link">VISIT MODEL PAGE &#8594;</span>`;
+      grid.appendChild(card);
+    });
+  }
+
+  // --- Render News ---
+  if (data.news && data.news.length) {
+    const grid = document.getElementById('newsGrid');
+    data.news.forEach(n => {
+      const card = document.createElement('div');
+      card.className = 'news-card reveal';
+      card.innerHTML = `<div class="news-card__image"><img src="${n.image}" alt="${n.title}"></div>
+        <p class="news-card__date">${n.date}</p>
+        <h3 class="news-card__title">${n.title}</h3>
+        <p class="news-card__excerpt">${n.excerpt}</p>
+        <a href="${n.link || '#'}" class="news-card__link">View Profile &#8594;</a>`;
+      grid.appendChild(card);
+    });
+  }
+
+  // --- Re-init reveal observer (newly created elements) ---
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+})();
 
 // ==========================================
 // MOBILE MENU
@@ -1556,17 +1470,7 @@ const navMenu = document.getElementById('navMenu');
 navToggle.addEventListener('click', () => {
   navMenu.classList.toggle('open');
   if (navMenu.classList.contains('open')) {
-    navMenu.style.display = 'flex';
-    navMenu.style.flexDirection = 'column';
-    navMenu.style.position = 'absolute';
-    navMenu.style.top = '100%';
-    navMenu.style.left = '0';
-    navMenu.style.right = '0';
-    navMenu.style.background = 'var(--neutral-0)';
-    navMenu.style.padding = '1rem clamp(1rem, 3vw, 4rem)';
-    navMenu.style.borderBottom = '1px solid var(--neutral-100)';
-    navMenu.style.gap = '0.5rem';
-    navMenu.style.zIndex = '998';
+    navMenu.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--neutral-0);padding:1rem clamp(1rem,3vw,4rem);border-bottom:1px solid var(--neutral-100);gap:0.5rem;z-index:998';
   } else {
     navMenu.style.display = '';
   }
@@ -1577,12 +1481,9 @@ navToggle.addEventListener('click', () => {
 // ==========================================
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 
