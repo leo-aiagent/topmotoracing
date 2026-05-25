@@ -1180,7 +1180,7 @@ ul { list-style: none; }
 
   // 1. Top Bar
   if (data.topBar) {
-    document.getElementById('topBarInner').innerHTML = `<a href="#" class="top-bar__pill top-bar__pill--active">${data.topBar.motorcycleText||'Motorcycles'}</a>`;
+    document.getElementById('topBarInner').innerHTML = `<a href="${data.topBar.motorcycleLink||'#'}" class="top-bar__pill top-bar__pill--active">${data.topBar.motorcycleText||'Motorcycles'}</a>`;
   }
 
   // 2. Navigation
