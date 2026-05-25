@@ -53,6 +53,20 @@ button{cursor:pointer;border:none;border-radius:var(--radius);padding:0.5rem 1re
 .editor-tabs{display:flex;gap:0;margin-bottom:1rem;border-bottom:1px solid var(--border)}
 .editor-tab{padding:0.375rem 0.875rem;font-size:0.75rem;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap}
 .editor-tab.active{color:var(--blue-light);border-bottom-color:var(--blue)}
+.img-pick-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--radius);padding:0.5rem 0.75rem;font-size:0.75rem;cursor:pointer;white-space:nowrap;margin-top:0.25rem}
+.img-pick-btn:hover{opacity:0.85}
+/* Image Picker Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:none;align-items:flex-start;justify-content:center;padding-top:3rem}
+.modal-overlay.show{display:flex}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;width:90vw;max-width:700px;max-height:80vh;overflow-y:auto;padding:1.5rem}
+.modal-box h3{font-size:1rem;margin-bottom:1rem}
+.modal-close{float:right;background:none;border:none;color:var(--text-muted);font-size:1.25rem;cursor:pointer;padding:0 0.25rem}
+.modal-close:hover{color:var(--text)}
+.modal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:0.5rem}
+.modal-img{cursor:pointer;aspect-ratio:4/3;overflow:hidden;border:2px solid transparent;border-radius:var(--radius);transition:border-color 0.2s}
+.modal-img:hover{border-color:var(--blue)}
+.modal-img img{width:100%;height:100%;object-fit:cover}
+.modal-img.selected{border-color:var(--blue-light);box-shadow:0 0 0 2px var(--blue-light)}
 </style>
 </head>
 <body>
@@ -187,7 +201,7 @@ function renderEditor(name){
         <div class="form-row"><div><label>Label</label><input value="${esc(s.label)}" onchange="contentData.heroSlides[${i}].label=this.value"></div><div><label>Tag</label><input value="${esc(s.tag)}" onchange="contentData.heroSlides[${i}].tag=this.value"></div></div>
         <div class="form-row"><div><label>Title</label><input value="${esc(s.title)}" onchange="contentData.heroSlides[${i}].title=this.value"></div><div><label>CTA Text</label><input value="${esc(s.ctaText)}" onchange="contentData.heroSlides[${i}].ctaText=this.value"></div></div>
         <label>Description</label><textarea rows="2" onchange="contentData.heroSlides[${i}].desc=this.value">${esc(s.desc)}</textarea>
-        <label>Image</label><input value="${esc(s.image)}" onchange="contentData.heroSlides[${i}].image=this.value">
+        <div style="display:flex;gap:0.5rem;align-items:end"><div style="flex:1"><label>Image</label><input value="${esc(s.image)}" onchange="contentData.heroSlides[${i}].image=this.value"></div><button class="img-pick-btn" onclick="event.preventDefault();pickImageFor(this.previousElementSibling.querySelector('input'))">📁 Pick</button></div>
         <label>CTA Link</label><input value="${esc(s.ctaLink)}" onchange="contentData.heroSlides[${i}].ctaLink=this.value">
       </div>`;
     });
@@ -210,7 +224,7 @@ function renderEditor(name){
     (d.topPicks.picks||[]).forEach((p,i)=>{
       html+=`<div class="editor-item"><h4>Pick ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="delPick(${i})">×</button></h4>
         <div class="form-row"><div><label>Model</label><input value="${esc(p.model)}" onchange="contentData.topPicks.picks[${i}].model=this.value"></div><div><label>Tagline</label><input value="${esc(p.tagline)}" onchange="contentData.topPicks.picks[${i}].tagline=this.value"></div></div>
-        <div class="form-row"><div><label>Image</label><input value="${esc(p.image)}" onchange="contentData.topPicks.picks[${i}].image=this.value"></div><div><label>Link</label><input value="${esc(p.link)}" onchange="contentData.topPicks.picks[${i}].link=this.value"></div></div>
+        <div style="display:flex;gap:0.5rem;align-items:end"><div style="flex:1"><label>Image</label><input value="${esc(p.image)}" onchange="contentData.topPicks.picks[${i}].image=this.value"></div><button class="img-pick-btn" onclick="event.preventDefault();pickImageFor(this.previousElementSibling.querySelector('input'))">📁 Pick</button></div><div><label>Link</label><input value="${esc(p.link)}" onchange="contentData.topPicks.picks[${i}].link=this.value"></div>
       </div>`;
     });
     document.getElementById('editorPicks').innerHTML=html;
@@ -233,7 +247,7 @@ function renderEditor(name){
       html+=`<div class="editor-item"><h4>Article ${i+1} <button class="btn-danger btn-sm" style="float:right" onclick="delNewsItem(${i})">×</button></h4>
         <div class="form-row"><div><label>Date</label><input value="${esc(n.date)}" onchange="contentData.news.articles[${i}].date=this.value"></div><div><label>Title</label><input value="${esc(n.title)}" onchange="contentData.news.articles[${i}].title=this.value"></div></div>
         <label>Excerpt</label><textarea rows="2" onchange="contentData.news.articles[${i}].excerpt=this.value">${esc(n.excerpt)}</textarea>
-        <div class="form-row"><div><label>Image</label><input value="${esc(n.image)}" onchange="contentData.news.articles[${i}].image=this.value"></div><div><label>Link</label><input value="${esc(n.link)}" onchange="contentData.news.articles[${i}].link=this.value"></div></div>
+        <div style="display:flex;gap:0.5rem;align-items:end"><div style="flex:1"><label>Image</label><input value="${esc(n.image)}" onchange="contentData.news.articles[${i}].image=this.value"></div><button class="img-pick-btn" onclick="event.preventDefault();pickImageFor(this.previousElementSibling.querySelector('input'))">📁 Pick</button></div><div><label>Link</label><input value="${esc(n.link)}" onchange="contentData.news.articles[${i}].link=this.value"></div>
       </div>`;
     });
     document.getElementById('editorNews').innerHTML=html;
@@ -337,5 +351,49 @@ document.addEventListener('DOMContentLoaded',()=>{
 // Auto login
 if(sessionStorage.getItem('tm_auth')==='1'){GTOKEN=sessionStorage.getItem('tm_tok')||'';document.getElementById('loginPage').style.display='none';document.getElementById('adminLayout').classList.add('active');setTimeout(async()=>{await loadContent();showPage('dashboard')},100)}
 </script>
+<!-- Image Picker Modal -->
+<div class="modal-overlay" id="imgModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>🖼 Select Image</h3>
+    <div class="modal-grid" id="modalGrid">Loading...</div>
+  </div>
+</div>
+
+<script>
+// Image picker
+let pickTargetInput = null;
+function pickImageFor(inputEl) {
+  pickTargetInput = inputEl;
+  document.getElementById('imgModal').classList.add('show');
+  document.body.style.overflow='hidden';
+  loadModalImages();
+}
+async function loadModalImages() {
+async function loadModalImages() {
+  const g = document.getElementById('modalGrid');
+  g.innerHTML = 'Loading...';
+  try {
+    const r = await fetch('https://api.github.com/repos/leo-aiagent/topmotoracing/contents/images', {
+      headers: { Authorization: 'Bearer '+GTOKEN, Accept: 'application/vnd.github.v3+json' }
+    });
+    const files = await r.json();
+    if (!Array.isArray(files)) { g.innerHTML = 'No images'; return; }
+    g.innerHTML = files.map(f => `<div class="modal-img" onclick="selectImage('images/${f.name}')"><img src="${f.download_url}" title="${f.name}" loading="lazy"></div>`).join('');
+  } catch(e) { g.innerHTML = 'Error loading images'; }
+}
+function selectImage(path) {
+  if (!pickTargetInput) return;
+  pickTargetInput.value = path;
+  // Trigger onchange
+  const ev = new Event('change', {bubbles:true});
+  pickTargetInput.dispatchEvent(ev);
+  closeModal();
+}
+function closeModal() {
+  document.getElementById('imgModal').classList.remove('show');
+  document.body.style.overflow='';
+  pickTargetInput = null;
+}
+</script>
 </body>
-</html>
